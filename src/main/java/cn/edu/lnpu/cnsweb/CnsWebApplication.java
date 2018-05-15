@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@MapperScan("cn.edu.lnpu.cnsweb.web.mapper")
 @ImportResource("classpath:xml/spring-config.xml")
 public class CnsWebApplication {
 
