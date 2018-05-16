@@ -26,7 +26,7 @@
 								<span class="us_uer"></span>
 								<input name="logpass" class="text" style="color: #FFFFFF !important; position:absolute; z-index:100;"value="" type="password" placeholder="请输入密码" id="password">
 							</div>
-							<div class="mb2"><a class="act-but submit" href="javascript:;" style="color: #FFFFFF" onclick="doLogin();">登录</a><a class="act-but submit" href="javascript:;" style="color: #FFFFFF" target="_blank">注册</a></div>
+							<div class="mb2"><a class="act-but submit" href="javascript:;" style="color: #FFFFFF" onclick="doLogin();">登录</a><a class="act-but submit" href="/register" style="color: #FFFFFF" target="_blank">注册</a></div>
 						</form>
 					</div>
 				</div>
@@ -35,6 +35,8 @@
 		<!--[if IE]>
 		<script th:src="@{/login/js/html5.js}"></script>
 		<![endif]-->
+		<script  th:src="@{/util/zDialog.js}"></script>
+		<script  th:src="@{/util/zDrag.js}"></script>
 		<script  th:src="@{/util/common.js}"></script>
 		<script  th:src="@{/lib/jquery.min.js}"></script>
 		<script  th:src="@{/login/js/TweenLite.min.js}"></script>

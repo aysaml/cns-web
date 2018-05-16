@@ -31,7 +31,7 @@
     </resultMap>
 
     <sql id="userInfo">
-        name,gender,birthday,imgUrl,idCard,nationId,email,phone,address,departmentId,major,beginDate,studentState,studentID,username.password
+        name,gender,birthday,imgUrl,idCard,nationId,email,phone,address,departmentId,major,beginDate,studentState,studentID,username,password
     </sql>
     <!-- 按照用户名和密码查找 -->
     <select id="getUserByNameAndPassword" resultType="cn.edu.lnpu.cnsweb.web.model.User" parameterType="Map">
@@ -97,12 +97,16 @@
                 studentID=#{studentID}
             </if>
         </set>
-        where uid=#{uid}
+        where id=#{id}
     </update>
     <!-- 增加 -->
-    <insert id="add" parameterType="cn.edu.lnpu.cnsweb.web.model.User">
+    <insert id="insertOne" parameterType="cn.edu.lnpu.cnsweb.web.model.UserVo" useGeneratedKeys="true">
             insert into t_user
-            <include refid="userInfo"/>
-            values(#{name},#{gender},#{birthday},#{imgUrl},#{idCard},#{nationId},#{email},#{phone},#{address},#{departmentId},#{major},#{beginDate},#{studentState},#{studentID},#{username}.#{password})
-        </insert>
+           (username,password)
+            values(#{username},#{password})
+     </insert>
+    <select id="selectUserByUsername" resultType="cn.edu.lnpu.cnsweb.web.model.User" parameterType="java.lang.String">
+        select <include refid="userInfo"/> from t_user
+        where username = #{username}
+    </select>
 </mapper>

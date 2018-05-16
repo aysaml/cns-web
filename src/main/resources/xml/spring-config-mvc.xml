@@ -14,9 +14,9 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
-            <mvc:mapping path="/web/**"/>
             <mvc:mapping path="/web/ucenter/**"/>
             <mvc:exclude-mapping path="/login"/>
+            <mvc:exclude-mapping path="/doLogin"/>
             <mvc:exclude-mapping path="/home"/>
             <mvc:exclude-mapping path="/logout"/>
             <mvc:exclude-mapping path="/web/**"/>
@@ -25,6 +25,9 @@
             <mvc:exclude-mapping path="/lib/**"/>
             <mvc:exclude-mapping path="/login/**"/>
             <mvc:exclude-mapping path="/util/**"/>
+            <mvc:exclude-mapping path="/register"/>
+            <mvc:exclude-mapping path="/register/**"/>
+            <mvc:exclude-mapping path="/doRegister"/>
             <bean id="UserInterceptor" class="cn.edu.lnpu.cnsweb.web.interceptor.UserInterceptor" />
         </mvc:interceptor>
     </mvc:interceptors>

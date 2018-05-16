@@ -14,6 +14,7 @@ public enum ConstantState {
     RUNTIME_ERROR(1000, "运行时错误") ,
     PARAMETER_ERROR(1001,"请求参数错误"),
     WINDOW_NONT_FIND(1002,"窗口不存在") ,
+    USER_EXIST(1003,"用户名已存在"),
 
     DATA_ONT_FOUND(2000,"数据不存在"),
     DATABASE_OPERATE_ERROR(2001,"数据库操作错误") ,

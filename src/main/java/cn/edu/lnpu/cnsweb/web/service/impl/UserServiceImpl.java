@@ -3,6 +3,7 @@ package cn.edu.lnpu.cnsweb.web.service.impl;
 import cn.edu.lnpu.cnsweb.common.StringUtils;
 import cn.edu.lnpu.cnsweb.web.dao.UserDao;
 import cn.edu.lnpu.cnsweb.web.model.User;
+import cn.edu.lnpu.cnsweb.web.model.UserVo;
 import cn.edu.lnpu.cnsweb.web.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,5 +47,43 @@ public class UserServiceImpl implements UserService {
             }
         }
         return null;
+    }
+
+    /**
+     * 注册，增加一个用户
+     *
+     * @param user
+     * @return
+     */
+    @Override
+    public int addUser(UserVo user) throws SQLException{
+        int count = 0;
+        if(user != null){
+            try{
+                count = userDao.insertOne(user);
+            }catch (Exception e){
+                logger.error("插入数据异常：",e.getMessage());
+                throw new SQLException(e);
+            }
+        }
+        return count;
+    }
+
+    /**
+     * 根据用户名获取用户对象
+     *
+     * @param username
+     * @return
+     */
+    @Override
+    public User getUserByUsername(String username) throws SQLException{
+        User user = null;
+        try{
+            user = userDao.selectUserByUsername(username);
+        }catch (Exception e){
+            logger.error("执行数据库查询异常：",e.getMessage());
+            throw new SQLException(e);
+        }
+        return user;
     }
 }
