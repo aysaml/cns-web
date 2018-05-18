@@ -1,0 +1,98 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="nav">
+    <header class="header">
+        <section class="container">
+            <a href="#mmenu" class="phone-nav glyphicon glyphicon-th-list"></a>
+        </section>
+        <div class="top">
+            <div class="container clearfix">
+                <div class="logo pull-left">
+                    <a href="/home"><img th:src="@{/cns/cns/images/logo.png}" alt="" /></a>
+                </div>
+                <div class="navwrap pull-right">
+                    <div class="lwt-wrap">
+	    				<span>
+	    					<img th:src="@{/cns/images/weixin.png}" alt="" />
+	    					<div class="erweima">
+	    						<img th:src="@{/cns/images/erweima.jpg}" alt="" />
+	    					</div>
+	    				</span>
+                            <a th:if="${session.username == null}" class="toptel" href="/login">登录 | </a>
+                            <a th:if="${session.username == null}" class="toptel" href="/register">注册</a>
+                            <a th:if="${session.username != null}" class="toptel" href="#" th:text="${session.username}" onclick="" th:attr="id=${session.id}"></a>
+                            <a th:if="${session.username != null}"  href="/logout"> | 注销</a>
+                    </div>
+                    <ul class="nav">
+                        <li class="active"><a href="/home">首页</a></li>
+                        <li><a href="/about">关于我们</a>
+                            <ul class="two">
+                                <li><a href="/about">系统简介</a></li>
+                                <li><a href="/honor">运营团队</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="pro.html">收录地点</a>
+                            <ul class="two">
+                                <li><a href="/pro">校内地点</a>
+                                    <ul>
+                                        <li><a href="pro.html">学习</a></li>
+                                        <li><a href="pro.html">美食</a></li>
+                                        <li><a href="pro.html">娱乐</a></li>
+                                        <li><a href="pro.html">生活</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/pro">校外周边</a>
+                                    <ul>
+                                        <li><a href="pro.html">学习</a></li>
+                                        <li><a href="pro.html">美食</a></li>
+                                        <li><a href="pro.html">娱乐</a></li>
+                                        <li><a href="pro.html">生活</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="/case">热点推荐</a>
+                            <ul class="two">
+                                <li><a href="case.html">校内地点</a>
+                                    <ul>
+                                        <li><a href="pro.html">学习</a></li>
+                                        <li><a href="pro.html">美食</a></li>
+                                        <li><a href="pro.html">娱乐</a></li>
+                                        <li><a href="pro.html">生活</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="case.html">校外周边</a>
+                                    <ul>
+                                        <li><a href="pro.html">学习</a></li>
+                                        <li><a href="pro.html">美食</a></li>
+                                        <li><a href="pro.html">娱乐</a></li>
+                                        <li><a href="pro.html">生活</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="/strength">地点接入</a>
+                            <ul class="two">
+                                <li><a href="strength.html">新增地点</a></li>
+                                <li><a href="#">上传图片</a></li>
+                                <li><a href="#">导游申请</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/news">新闻中心</a>
+                            <ul class="two">
+                                <li><a href="news.html">校园新闻</a></li>
+                                <li><a href="news.html">其他新闻</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/contact">联系我们</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </header>
+</div>
+</body>
+</html>

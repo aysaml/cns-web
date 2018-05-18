@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>首页</title>
+    <meta name="keywords" content="辽宁石油化工大学校园导航系统">
+    <meta name="description" content="辽宁石油化工大学校园导航系统">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <!-- include main css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/cns/css/slick.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/cns/css/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/cns/css/jquery.mmenu.all.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/cns/css/style.css}"/>
+
+    <!--[if lt IE 9]>
+    <script th:src="@{http://apps.bdimg.com/libs/html5shiv/r29/html5.min.js}"></script>
+    <script th:src="@{http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js}"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+<div>
+    <!--header-->
+    <div th:include="/common/header :: nav"></div>
+
+    <!--banner-->
+    <section class="banner">
+        <div><a href="#"><img th:src="@{/cns/images/banner01.jpg}" alt="" /></a></div>
+        <div><a href="#"><img th:src="@{/cns/images/banner01.jpg}" alt="" /></a></div>
+        <div><a href="#"><img th:src="@{/cns/images/banner01.jpg}" alt="" /></a></div>
+    </section>
+
+
+
+
+
+
+</div>
+
+<!--系统介绍 start-->
+<div class="scope">
+    <div class="container">
+        <div class="tit">
+            <span class="titspan1">System Introduction</span>
+            <span class="titspan2"><img th:src="@{/cns/images/titline.jpg}" alt="" /><em>系统介绍</em><img th:src="@{/cns/images/titline.jpg}" alt="" /></span>
+        </div>
+        <ul class="clearfix">
+            <li>
+                <div class="pic"><a href="/pro_show"><img class="vcenter" th:src="@{/cns/images/scope1.jpg}" alt="" /></a></div>
+                <a href="/pro_show" class="scopea">地点接入</a>
+                <p>提供地点接入服务，每个地点来源于你的发现！</p>
+            </li>
+            <li>
+                <div class="pic"><a href="pro_show.html"><img class="vcenter" th:src="@{/cns/images/scope2.jpg}" alt="" /></a></div>
+                <a href="pro_show.html" class="scopea">图片上传</a>
+                <p>提供图片上传服务，每张图片来源于你的馈赠！</p>
+            </li>
+            <li>
+                <div class="pic"><a href="pro_show.html"><img class="vcenter" th:src="@{/cns/images/scope3.jpg}" alt="" /></a></div>
+                <a href="pro_show.html" class="scopea">地点导航</a>
+                <p>提供地点导航服务，每次导航来源于你的信任！</p>
+            </li>
+            <li>
+                <div class="pic"><a href="pro_show.html"><img class="vcenter" th:src="@{/cns/images/scope4.jpg}" alt="" /></a></div>
+                <a href="pro_show.html" class="scopea">导游申请</a>
+                <p>提供导游申请服务，每份微笑来源于你的奉献！</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--业务范围 end-->
+
+<!--index about start-->
+<div class="inabout">
+    <div class="container">
+        <div class="tit">
+            <span class="titspan1" data-scroll-reveal="enter top">System Description</span>
+            <span class="titspan2" data-scroll-reveal="enter bottom after 0.5s"><img th:src="@{/cns/images/titline2.jpg}" alt="" /><em>系统描述</em><img th:src="@{/cns/images/titline2.jpg}" alt="" /></span>
+        </div>
+        <div class="inabtxt" data-scroll-reveal="enter bottom over 1s and move 100px">
+            <p>辽宁石油化工大学校园导航系统（LNPU-CNS），旨在为学生提供一套方便完善的校园导航、建筑物介绍、周边美食推荐、周边文化景点游览服务。通过技术手段，可以自动生成特定地点的二维码，用户通过扫描二维码，可以展示该地点的名称，位置，详细描述和导游信息。同时，用户可以通过访问系统网站，使用地点接入、热点推荐、导游报名、公告板、留言等功能。通过本系统，可以极大的方便、丰富师生的校园生活，同时对于来访人员更好的介绍本校的历史文化底蕴和学风建设成果等。</p>
+        </div>
+        <a data-scroll-reveal="enter bottom over 1s and move 300px after 0.3s" href="/about" class="more">查看更多</a>
+    </div>
+</div>
+<!--index about end-->
+
+<!--index case start-->
+<div class="incase">
+    <div class="container">
+        <div class="tit">
+            <span class="titspan1" data-scroll-reveal="enter top">HotSpot Recommendation</span>
+            <span class="titspan2" data-scroll-reveal="enter bottom after 0.5s"><img th:src="@{/cns/images/titline.jpg}" alt="" /><em>热点推荐</em><img th:src="@{/cns/images/titline.jpg}" alt="" /></span>
+        </div>
+        <div class="incasecon">
+            <div class="incasefl">
+                <div><a data-scroll-reveal="enter top after 0.5s" href="javascript:;">学习</a></div>
+                <div><a data-scroll-reveal="enter bottom over 1s and move 300px after 0.3s" href="javascript:;">美食</a></div>
+                <div><a data-scroll-reveal="enter top over 0.5s and move 200px" href="javascript:;">娱乐</a></div>
+                <div><a data-scroll-reveal="enter bottom" href="javascript:;">生活</a></div>
+            </div>
+
+        </div>
+    </div>
+    <!-- 热点数据加载-->
+    <div class="incasewrap" data-scroll-reveal="enter bottom over 1s and move 100px">
+        <div><div class="demo">
+            <div class="demo1">
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase1.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase2.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase3.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase1.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase2.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase3.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase1.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase2.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase3.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+            </div>
+        </div>
+        </div>
+        <div><div class="demo">
+            <div class="demo1">
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase1.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase2.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase3.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase1.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase2.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase3.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase1.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase2.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase3.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+            </div>
+        </div>
+        </div>
+        <div><div class="demo">
+            <div class="demo1">
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase2.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase3.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase1.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase2.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase3.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase1.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase2.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase3.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase1.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+            </div>
+        </div>
+        </div>
+        <div><div class="demo">
+            <div class="demo1">
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase1.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase2.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase3.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase1.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase2.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase3.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase1.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase2.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+                <div><a href="case_show.html">
+                    <div class="pic">
+                        <img class="vcenter" src="images/incase3.jpg" border="0" />
+                    </div>
+                    <div class="zzc">
+                        <div class="casename">
+                            <span>案例名称</span>
+                            <div class="line"></div>
+                        </div>
+                    </div>
+                </a></div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <a data-scroll-reveal="enter bottom after 0.5s" href="/case" class="more">查看更多</a>
+</div>
+<!--index case end-->
+
+<!--index news start-->
+<div class="innews">
+    <div class="container clearfix">
+        <div class="innleft pull-left">
+            <div class="pic pull-left"><img class="vcenter" src="images/inn1.jpg" alt="" /></div>
+            <div class="inntxt pull-right">
+                <ul>
+                    <li><a href="news_show.html">我国纳米绿色印刷技术领先世界</a><span>[ 2016-07-19 ]</span></li>
+                    <li><a href="news_show.html">互联网包装已成为潍坊礼品盒包装印...</a><span>[ 2016-07-19 ]</span></li>
+                    <li><a href="news_show.html">适用新刑法 印刷厂索贿窝案改判</a><span>[ 2016-07-19 ]</span></li>
+                    <li><a href="news_show.html">世纪开元只做线上颠覆传统印刷业</a><span>[ 2016-07-19 ]</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="innleft pull-left innright">
+            <div class="pic pull-left"><img class="vcenter" src="images/inn2.jpg" alt="" /></div>
+            <div class="inntxt pull-right">
+                <ul>
+                    <li>电话：<a href="tel:021-12345678">021-12345678</a></li>
+                    <li>邮箱：<a href="mailto:2563n.wang@12345.com">2563n.wang@12345.com</a></li>
+                    <li>手机：<a href="tel:189 1234 0789">189 1234 0789</a></li>
+                    <li>地址：辽宁省抚顺市望花区丹东路西段1号</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--index news end-->
+
+
+<!--footer start-->
+<div th:include="/common/footer :: foot"></div>
+
+
+<!--footer end-->
+
+<!--移动端  Mmenu-->
+<div th:include="/common/mnav :: mnav"></div>
+
+
+
+
+
+
+
+<!--Include Js-->
+<script th:src="@{http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js}" type="text/javascript" charset="utf-8"></script>
+
+<!--移动端导航-->
+<script th:src="@{/cns/js/jquery.mmenu.all.min.js}" type="text/javascript" charset="utf-8"></script>
+
+<script th:src="@{/cns/js/public.js}" type="text/javascript" charset="utf-8"></script>
+
+<!--slick-->
+<script th:src="@{/cns/js/slick.min.js}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.banner').slick({
+            dots: true,
+            autoplay:true,
+            arrows:false,
+            autoplaySpeed:3000,
+        });
+
+        $(".demo1").slick({
+            dots:false,
+            arrows:false,
+            autoplay:true,
+            slidesToShow:7,
+            slidesToScroll:6,
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 5
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                }
+
+            ]
+        })
+
+        $(".incasewrap").slick({
+            fade: true,
+            useTransform: true,
+            arrows: false,
+            draggable:false,
+            asNavFor:".incasefl"
+        })
+        $(".incasefl").slick({
+            focusOnSelect: true,
+            slidesToShow: 7,
+            useTransform: true,
+            arrows: false,
+            asNavFor:".incasewrap",
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 3,
+                    }
+                }
+
+            ]
+        });
+    });
+</script>
+
+<!--placeholder-->
+<script th:src="@{/cns/js/jquery.placeholder.min.js}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $(function(){ $('input, textarea').placeholder(); });
+</script>
+<script type="text/javascript" th:src="@{/cns/js/scrollReveal.js}"></script>
+<script>
+    if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+        (function(){
+            window.scrollReveal = new scrollReveal({reset: true});
+        })();
+    };
+</script>
+
+<!--<script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+
+</body>
+</html>
