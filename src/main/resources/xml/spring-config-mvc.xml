@@ -33,6 +33,10 @@
             <mvc:exclude-mapping path="/operate"/>
             <mvc:exclude-mapping path="/error"/>
             <mvc:exclude-mapping path="/contact"/>
+            <mvc:exclude-mapping path="/map"/>
+            <mvc:exclude-mapping path="/spot/**"/>
+            <mvc:exclude-mapping path="/hotSpot/**"/>
+            <mvc:exclude-mapping path="/news**"/>
             <bean id="UserInterceptor" class="cn.edu.lnpu.cnsweb.web.interceptor.UserInterceptor" />
         </mvc:interceptor>
     </mvc:interceptors>

@@ -12,8 +12,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ContactController {
 
+    /**
+     * 联系我们
+     * @return
+     */
     @RequestMapping("/contact")
     public String contact(){
         return "contact";
+    }
+
+    /**
+     * 站点地图
+     * @return
+     */
+    @RequestMapping("/map")
+    public String map(){
+        return "map";
     }
 }
