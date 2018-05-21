@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>关于我们</title>
+	<meta name="keywords" content="辽宁石油化工大学在校园导航系统">
+	<meta name="description" content="辽宁石油化工大学在校园导航系统">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!-- include main css -->
+	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/slick.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/bootstrap.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/jquery.mmenu.all.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/style.css}"/>
+
+	<!--[if lt IE 9]>
+    <script th:src="@{http://apps.bdimg.com/libs/html5shiv/r29/html5.min.js}"></script>
+    <script th:src="@{http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js}"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div>
+	<!--header-->
+	<div th:include="/common/header :: nav"></div>
+
+	<!--banner-->
+	<section class="banner">
+		<img th:src="@{/cns/images/about-banner.jpg}" alt="" />
+	</section>
+
+
+
+
+
+
+</div>
+
+<!--面包屑导航 start-->
+<div class="mbx">
+	<div class="container">
+		<div class="nytit pull-left">关于我们</div>
+		<menu class="menu pull-left" id="menu">
+			<div><a href="/about" class="cur">系统简介</a></div>
+			<div><a href="/operate">运营团队</a></div>
+		</menu>
+		<div class="mbxwrap pull-right">
+			<a href="/home">首页</a> <span>/</span>
+			<a href="/about">关于我们</a> <span>/</span>
+			<em>系统简介</em>
+		</div>
+	</div>
+</div>
+<!--面包屑导航 end-->
+
+
+
+<div class="nycon">
+	<div class="container">
+		<div class="ltxt pull-left">
+		<p>随着每年的开学季到来，每个大学的校园都会迎来众多朝气蓬勃、怀着青春梦想的大一新生。而这些新生初来校园，如何准确的了解校园的地理位置，如何快速的适应大学生活，如何积极的投入到学习生活中去成为了困扰他们的一大难题。</p>
+      <p>相比较传统的问人指路，询问相关建筑物的具体描述，当代青年人更偏向于使用手机来解决这一问题。但是如今的导航软件并不能具体到每个大学校园的具体建筑物。在互联网+的大背景下，随着扫一扫的流行，结合我校的实际情况，为了帮助新生解决这一难题，校园导航系统应运而生。</p>
+      <p>通过基于java的二维码校园导航系统的实现，为学生提供一套方便完善的校园导航、建筑物介绍、周边美食推荐、周边文化景点游览服务。</p>
+      <p>通过技术手段，可以自动生成特定地点的二维码，用户通过扫描二维码，可以展示该地点的名称，位置，详细描述和导游信息。同时，用户可以通过访问系统网站，使用地点接入、热点推荐、导游报名、公告板、留言等功能。通过本课题的研究实现，可以极大的方便、丰富师生的校园生活，同时对于来访人员更好的介绍本校的历史文化底蕴和学风建设成果等。</p>
+      <p>科技改变生活，进步永不止步！</p>
+		</div>
+		<div class="rimg pull-right">
+			<img th:src="@{/cns/images/abimg.jpg}" alt="" />
+		</div>
+	</div>
+</div>
+
+
+<!--index news start-->
+<div class="innews">
+	<div class="container clearfix">
+		<div class="innleft pull-left">
+			<div class="pic pull-left"><img class="vcenter" th:src="@{/cns/images/inn1.jpg}" alt="" /></div>
+			<div class="inntxt pull-right">
+				<ul>
+					<li><a href="news_show.html">我国纳米绿色印刷技术领先世界</a><span>[ 2016-07-19 ]</span></li>
+					<li><a href="news_show.html">互联网包装已成为潍坊礼品盒包装印...</a><span>[ 2016-07-19 ]</span></li>
+					<li><a href="news_show.html">适用新刑法 印刷厂索贿窝案改判</a><span>[ 2016-07-19 ]</span></li>
+					<li><a href="news_show.html">世纪开元只做线上颠覆传统印刷业</a><span>[ 2016-07-19 ]</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="innleft pull-left innright">
+			<div class="pic pull-left"><img class="vcenter" th:src="@{/cns/images/inn2.jpg}" alt="" /></div>
+			<div class="inntxt pull-right">
+				<ul>
+					<li>电话：<a href="tel:021-12345678">021-12345678</a></li>
+					<li>邮箱：<a href="mailto:2563n.wang@12345.com">2563n.wang@12345.com</a></li>
+					<li>手机：<a href="tel:189 1234 0789">189 1234 0789</a></li>
+					<li>地址：辽宁省抚顺市望花区丹东路西段1号</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--index news end-->
+
+
+<!--footer start-->
+<div th:include="/common/footer :: foot"></div>
+
+
+<!--footer end-->
+
+
+
+<!--移动端  Mmenu-->
+<div th:include="/common/mnav :: mnav"></div>
+
+
+
+
+
+
+
+
+<!--Include Js-->
+<script th:src="@{http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js}" type="text/javascript" charset="utf-8"></script>
+
+<!--移动端导航-->
+<script th:src="@{/cns/js/jquery.mmenu.all.min.js}" type="text/javascript" charset="utf-8"></script>
+
+<script th:src="@{/cns/js/public.js}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" th:src="@{/cns/js/slick.min.js}" ></script>
+<!--placeholder-->
+<script th:src="@{/cns/js/jquery.placeholder.min.js}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function(){ $('input, textarea').placeholder(); });
+</script>
+</body>
+</html>

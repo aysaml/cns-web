@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>运营团队</title>
+	<meta name="keywords" content="辽宁石油化工大学校园导航系统">
+	<meta name="description" content="辽宁石油化工大学校园导航系统">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!-- include main css -->
+	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/slick.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/bootstrap.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/jquery.mmenu.all.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/style.css}"/>
+	<link rel="stylesheet" href="css/lightbox.css">
+
+	<!--[if lt IE 9]>
+    <script th:src="@{http://apps.bdimg.com/libs/html5shiv/r29/html5.min.js}"></script>
+    <script th:src="@{http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js}"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div>
+	<!--header-->
+	<div th:include="/common/header :: nav"></div>
+
+	<!--banner-->
+	<section class="banner">
+		<img th:src="@{/cns/images/about-banner.jpg}" alt="" />
+	</section>
+
+
+
+
+
+
+</div>
+
+<!--面包屑导航 start-->
+<div class="mbx">
+	<div class="container">
+		<div class="nytit pull-left">关于我们</div>
+		<menu class="menu pull-left" id="menu">
+			<div><a href="/about">系统简介</a></div>
+			<div><a href="/operate" class="cur">运营团队</a></div>
+		</menu>
+		<div class="mbxwrap pull-right">
+			<a href="/home">首页</a> <span>/</span>
+			<a href="/about">关于我们</a> <span>/</span>
+			<em>运营团队</em>
+		</div>
+	</div>
+</div>
+<!--面包屑导航 end-->
+
+
+
+<div class="nycon">
+	<div class="container">
+		<div class="honor">
+			<ul class="clearfix">
+				<li class="pic">
+					<a href="/cns/images/honor1.jpg" rel="lightbox" class="cboxElement">
+						<img class="vcenter" th:src="@{/cns/images/honor1.jpg}" alt="" />
+						<div class="zzc">
+							<div class="zzctxt">
+								<span>系统管理员</span>
+								<div class="line"></div>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="pic">
+					<a href="/cns/images/honor2.jpg" rel="lightbox" class="cboxElement">
+						<img class="vcenter" th:src="@{/cns/images/honor2.jpg}" alt="" />
+						<div class="zzc">
+							<div class="zzctxt">
+								<span>图片管理员</span>
+								<div class="line"></div>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="pic">
+					<a href="/cns/images/honor3.jpg" rel="lightbox" class="cboxElement">
+						<img class="vcenter" th:src="@{/cns/images/honor3.jpg}" alt="" />
+						<div class="zzc">
+							<div class="zzctxt">
+								<span>地点管理员</span>
+								<div class="line"></div>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="pic">
+					<a href="/cns/images/honor4.jpg" rel="lightbox" class="cboxElement">
+						<img class="vcenter" th:src="@{/cns/images/honor4.jpg}" alt="" />
+						<div class="zzc">
+							<div class="zzctxt">
+								<span>导游管理员</span>
+								<div class="line"></div>
+							</div>
+						</div>
+					</a>
+				</li>
+				<li class="pic">
+					<a href="/cns/images/honor1.jpg" rel="lightbox" class="cboxElement">
+						<img class="vcenter" th:src="@{/cns/images/honor1.jpg}" alt="" />
+						<div class="zzc">
+							<div class="zzctxt">
+								<span>导航资源管理员</span>
+								<div class="line"></div>
+							</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!--移动端荣誉资质-->
+		<div class="phone-honor">
+			<ul>
+				<li class="pic"><img class="vcenter" th:src="@{/cns/images/honor1.jpg}" alt="" /></li>
+				<li class="pic"><img class="vcenter" th:src="@{/cns/images/honor2.jpg}" alt="" /></li>
+				<li class="pic"><img class="vcenter" th:src="@{/cns/images/honor3.jpg}" alt="" /></li>
+				<li class="pic"><img class="vcenter" th:src="@{/cns/images/honor4.jpg}" alt="" /></li>
+				<li class="pic"><img class="vcenter" th:src="@{/cns/images/honor1.jpg}" alt="" /></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<!--index news start-->
+<div class="innews">
+	<div class="container clearfix">
+		<div class="innleft pull-left">
+			<div class="pic pull-left"><img class="vcenter" th:src="@{/cns/images/inn1.jpg}" alt="" /></div>
+			<div class="inntxt pull-right">
+				<ul>
+					<li><a href="news_show.html">我国纳米绿色印刷技术领先世界</a><span>[ 2016-07-19 ]</span></li>
+					<li><a href="news_show.html">互联网包装已成为潍坊礼品盒包装印...</a><span>[ 2016-07-19 ]</span></li>
+					<li><a href="news_show.html">适用新刑法 印刷厂索贿窝案改判</a><span>[ 2016-07-19 ]</span></li>
+					<li><a href="news_show.html">世纪开元只做线上颠覆传统印刷业</a><span>[ 2016-07-19 ]</span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="innleft pull-left innright">
+			<div class="pic pull-left"><img class="vcenter" th:src="@{/cns/images/inn2.jpg}" alt="" /></div>
+			<div class="inntxt pull-right">
+				<ul>
+					<li>电话：<a href="tel:021-12345678">021-12345678</a></li>
+					<li>邮箱：<a href="mailto:2563n.wang@12345.com">2563n.wang@12345.com</a></li>
+					<li>手机：<a href="tel:189 1234 0789">189 1234 0789</a></li>
+					<li>地址：辽宁省抚顺市望花区丹东路西段1号</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--index news end-->
+
+
+<!--footer start-->
+<div class="footer">
+	<div class="container">
+		<div class="fleft pull-left">
+			<ul class="fnav clearfix">
+				<li><a href="index.html">首页</a></li>
+				<li><a href="about.html">关于我们</a></li>
+				<li><a href="pro.html">业务范围</a></li>
+				<li><a href="case.html">客户案例</a></li>
+				<li><a href="strength.html">实力展现</a></li>
+				<li><a href="news.html">新闻中心</a></li>
+				<li><a href="contact.html">联系我们</a></li>
+			</ul>
+			<p>上海唯星信息技术有限公司  沪ICP备xxxx号<img src="images/yu.png" alt="" /><a href="map.html">站点地图</a></p>
+		</div>
+		<div class="fright pull-right">
+			<div class="friendlink pull-left">
+				<span>友情链接</span>
+				<div class="flinkdown">
+					<a href="http://www.baidu.com" target="_blank">百度</a>
+					<a href="http://www.71360.com" target="_blank">唯星</a>
+				</div>
+			</div>
+			<div class="erweima pull-right">
+				<img src="images/erweima.jpg" alt="" />
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--footer end-->
+<!--移动端  Mmenu-->
+<div th:include="/common/mnav :: mnav"></div>
+
+
+
+
+
+
+
+
+
+
+
+<!--Include Js-->
+<script th:src="@{http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js}" type="text/javascript" charset="utf-8"></script>
+
+<!--移动端导航-->
+<script th:src="@{/cns/js/jquery.mmenu.all.min.js}" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/cns/js/lightbox.js}" type="text/javascript"></script>
+<script th:src="@{/cns/js/public.js}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" th:src="@{/cns/js/slick.min.js}" ></script>
+<script type="text/javascript">
+	$(function(){
+		$(".phone-honor ul").slick({
+			dots:true,
+			autoplay:true,
+			arrows:false,
+		})
+	})
+</script>
+<!--placeholder-->
+<script th:src="@{/cns/js/jquery.placeholder.min.js}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function(){ $('input, textarea').placeholder(); });
+</script>
+</body>
+</html>

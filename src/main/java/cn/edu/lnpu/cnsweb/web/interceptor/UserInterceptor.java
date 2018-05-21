@@ -44,7 +44,9 @@ public class UserInterceptor implements HandlerInterceptor {
       //当url地址为登录的url的时候跳过拦截器
       if(reqUrl.contains("/login")){
           return true;
-      }else{
+      }else if("/".equals(reqUrl)){
+          response.sendRedirect("/home");
+      } else{
           HttpSession session=request.getSession();
           Object object=session.getAttribute("username");
           if(object==null||"".equals(object.toString())){
