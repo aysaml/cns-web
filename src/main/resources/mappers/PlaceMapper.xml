@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.lnpu.cnsweb.web.dao.PlaceDao">
+    <resultMap id="placeMap" type="cn.edu.lnpu.cnsweb.web.model.Place">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="placeNameCh" column="placeNameCh" jdbcType="VARCHAR"/>
+        <result property="placeNameEn" column="placeNameEn" jdbcType="VARCHAR"/>
+        <result property="alias" column="alias" jdbcType="VARCHAR"/>
+        <result property="isSchool" column="isSchool" jdbcType="INTEGER"/>
+        <result property="type" column="type" jdbcType="INTEGER"/>
+        <result property="descr" column="descr" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="updateTime" jdbcType="VARCHAR"/>
+        <result property="operator" column="operator" jdbcType="VARCHAR"/>
+        <result property="yn" column="yn" jdbcType="INTEGER"/>
+        <result property="img" column="img" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="baseSql">
+        id,placeNameCh,placeNameEn,alias,isSchool,type,descr,createTime,updateTime,operator,yn,img
+    </sql>
+
+    <select id="getPlaceCountByType" resultType="Integer" parameterType="java.util.Map">
+        select count(id) from place
+        where type = #{type,jdbcType=INTEGER}
+        and isSchool = #{isSchool,jdbcType=INTEGER}
+        and yn = 1
+    </select>
+
+    <select id="getPlaceListByType" resultMap="placeMap" parameterType="java.util.Map">
+        select <include refid="baseSql"/>
+        from place
+        where type = #{type,jdbcType=INTEGER}
+        and isSchool = #{isSchool,jdbcType=INTEGER}
+        and yn = 1
+    </select>
+</mapper>

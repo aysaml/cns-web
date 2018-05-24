@@ -3,49 +3,53 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>联系我们</title>
-	<meta name="keywords" content="联系我们">
-	<meta name="description" content="联系我们">
+	<title>收录地点</title>
+	<meta name="keywords" content="收录地点">
+	<meta name="description" content="收录地点">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
+	
 	<!-- include main css -->
 	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/slick.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/bootstrap.css}"/>
 	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/jquery.mmenu.all.css}"/>
 	<link rel="stylesheet" th:href="@{/cns/css/animate.min.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/style.css}"/>
-	<script type="text/javascript" th:src="@{http://api.map.baidu.com/api?v=2.0&ak=6d88e38ab7f507ee19cec46443691d95}"></script>
+	<!--<link rel="stylesheet" type="text/css" th:href="@{/cns/css/pagination.css}">-->
 	<!--[if lt IE 9]>
     <script th:src="@{http://apps.bdimg.com/libs/html5shiv/r29/html5.min.js}"></script>
     <script th:src="@{http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js}"></script>
     <![endif]-->
-
+	
 </head>
 <body>
 <div>
 	<!--header-->
 	<div th:include="/common/header :: nav"></div>
-
+			
 	<!--banner-->
 	<section class="banner">
-		<img th:src="@{/cns/images/contactbanner.jpg}" alt="" />
+		<img th:src="@{/cns/images/probanner.jpg}" alt="" />
 	</section>
+	
 
 
 
-
-
-
+		
+		
 </div>
-
+	
 <!--面包屑导航 start-->
 <div class="mbx">
 	<div class="container">
-		<div class="nytit pull-left">联系我们</div>
-
+		<div class="nytit pull-left">收录地点</div>
+		<menu class="menu pull-left" id="menu">
+			<div><a th:class="${isSchool == 0 } ? 'cur'" onclick="inSchool();">校内地点</a></div>
+			<div><a th:class="${isSchool == 1 } ? 'cur'" onclick="notInSchool();">校外周边</a></div>
+		</menu>
 		<div class="mbxwrap pull-right">
 			<a href="/home">首页</a> <span>/</span>
-			<em>联系我们</em>
+			<a href="/spot/inSchool?type=1">收录地点</a> <span>/</span>
+			<em th:text="${isInSchool}"></em>
 		</div>
 	</div>
 </div>
@@ -54,28 +58,18 @@
 
 
 <div class="nycon">
-
 	<div class="container">
-		<div class="contact">
-			<div class="ctactit">
-				<h1>辽宁石油化工大学</h1>
-				<span>Liaoning ShiHua University</span>
+		<div class="pro">
+			<input id="totalCount" th:attr="value=${count}"  type="hidden">
+			<input id="type" th:attr="value=${type}"  type="hidden">
+			<input id="isSchool" th:attr="value=${isSchool}"  type="hidden">
+			<div class="twofenlei">
+				<a th:each="type,iterStat:${types}" th:text="${type.typeName}" th:attr="code=${type.code}" onclick="typeChang(this)"></a>
 			</div>
-			<div class="ctactcon clearfix">
-				<div class="ditu pull-left">
-					<div id="map"></div>
-				</div>
-				<div class="ctactwrap pull-left">
-					<ul>
-						<li>电话：<a href="tel:021-12345678">021-12345678</a></li>
-						<li>邮箱：<a href="mailto:2563n.wang@12345.com">2563n.wang@12345.com</a></li>
-						<li>手机：<a href="tel:189 1234 0789">189 1234 0789</a></li>
-						<li>地址：辽宁省抚顺市望花区丹东路西段一号 </li>
-					</ul>
-					<div class="cerweima">
-						<img th:src="@{/cns/images/cerweima.jpg}" alt="" />
-					</div>
-				</div>
+			<ul class="procon clearfix" id="content">
+
+			</ul>
+			<div class="page">
 			</div>
 		</div>
 	</div>
@@ -86,7 +80,7 @@
 <div class="innews">
 	<div class="container clearfix">
 		<div class="innleft pull-left">
-			<div class="pic pull-left"><img class="vcenter" th:src="@{/cns/images/inn1.jpg}" alt="" /></div>
+			<div class="pic pull-left"><img class="vcenter" src="images/inn1.jpg" alt="" /></div>
 			<div class="inntxt pull-right">
 				<ul>
 					<li><a href="news_show.html">我国纳米绿色印刷技术领先世界</a><span>[ 2016-07-19 ]</span></li>
@@ -97,7 +91,7 @@
 			</div>
 		</div>
 		<div class="innleft pull-left innright">
-			<div class="pic pull-left"><img class="vcenter" th:src="@{/cns/images/inn2.jpg}" alt="" /></div>
+			<div class="pic pull-left"><img class="vcenter" src="images/inn2.jpg" alt="" /></div>
 			<div class="inntxt pull-right">
 				<ul>
 					<li>电话：<a href="tel:021-12345678">021-12345678</a></li>
@@ -117,6 +111,8 @@
 
 
 <!--footer end-->
+
+
 <!--移动端  Mmenu-->
 <div th:include="/common/mnav :: mnav"></div>
 
@@ -125,11 +121,9 @@
 
 
 
-
-
-
-
-
+	
+	
+	
 <!--Include Js-->
 <script th:src="@{http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js}" type="text/javascript" charset="utf-8"></script>
 
@@ -138,60 +132,13 @@
 
 <script th:src="@{/cns/js/public.js}" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" th:src="@{/cns/js/slick.min.js}" ></script>
-
+<script type="text/javascript" th:src="@{/cns/js/spot.js}"></script>
+<script th:src="@{/util/jquery.pagination.js}"></script>
 <!--placeholder-->
 <script th:src="@{/cns/js/jquery.placeholder.min.js}" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/util/common.js}"></script>
 <script type="text/javascript">
 	$(function(){ $('input, textarea').placeholder(); });
 </script>
-<script type="text/javascript">
-
-    // 百度地图API功能
-    var map = new BMap.Map("map");    // 创建Map实例
-    var point = new BMap.Point(123.797897,41.863585);   //坐标拾取网址：http://api.map.baidu.com/lbsapi/getpoint/index.html
-
-    var marker = new BMap.Marker(point);  // 创建标注
-
-
-
-    var top_left_control = new BMap.ScaleControl({anchor: BMAP_ANCHOR_TOP_LEFT});// 左上角，添加比例尺
-    var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
-
-    marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
-    map.centerAndZoom(point, 16);  // 初始化地图,设置中心点坐标和地图级别
-    map.addOverlay(marker);               // 将标注添加到地图中
-    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-    map.addControl(new BMap.MapTypeControl());   //添加地图类型控件
-    map.setCurrentCity("上海");          // 设置地图显示的城市 此项是必须设置的
-
-
-
-    window.onresize = function(){
-
-        map.centerAndZoom(point, 17);  // 重置窗口的时候 重新获取中心点坐标的位置
-
-    }
-
-    /*
-     * 若要开启全景模式，解注
-     */
-
-    /*var stCtrl = new BMap.PanoramaControl(); //构造全景控件
-    map.addTileLayer(new BMap.PanoramaCoverageLayer());
-    stCtrl.setOffset(new BMap.Size(20, 20));
-    map.addControl(stCtrl);//添加全景控件*/
-
-
-
-
-    //添加缩放控件
-    map.addControl(top_left_control);
-    map.addControl(top_left_navigation);
-    /*map.addControl(top_right_navigation);  */
-
-
-
-</script>
-
 </body>
 </html>
