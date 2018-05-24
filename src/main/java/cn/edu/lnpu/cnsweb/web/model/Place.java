@@ -17,6 +17,8 @@ public class Place {
 
     private int isSchool;
 
+    private int isHot;
+
     private int type;
 
     private String descr;
@@ -69,6 +71,14 @@ public class Place {
 
     public void setIsSchool(int isSchool) {
         this.isSchool = isSchool;
+    }
+
+    public int getIsHot() {
+        return isHot;
+    }
+
+    public void setIsHot(int isHot) {
+        this.isHot = isHot;
     }
 
     public int getType() {

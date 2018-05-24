@@ -9,6 +9,7 @@
         <result property="placeNameEn" column="placeNameEn" jdbcType="VARCHAR"/>
         <result property="alias" column="alias" jdbcType="VARCHAR"/>
         <result property="isSchool" column="isSchool" jdbcType="INTEGER"/>
+        <result property="isHot" column="isHot" jdbcType="INTEGER"/>
         <result property="type" column="type" jdbcType="INTEGER"/>
         <result property="descr" column="descr" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="VARCHAR"/>
@@ -19,7 +20,7 @@
     </resultMap>
 
     <sql id="baseSql">
-        id,placeNameCh,placeNameEn,alias,isSchool,type,descr,createTime,updateTime,operator,yn,img
+        id,placeNameCh,placeNameEn,alias,isSchool,isHot,type,descr,createTime,updateTime,operator,yn,img
     </sql>
 
     <select id="getPlaceCountByType" resultType="Integer" parameterType="java.util.Map">
@@ -34,6 +35,23 @@
         from place
         where type = #{type,jdbcType=INTEGER}
         and isSchool = #{isSchool,jdbcType=INTEGER}
+        and yn = 1
+    </select>
+
+    <select id="getHotPlaceCountByType" resultType="Integer" parameterType="java.util.Map">
+        select count(id) from place
+        where type = #{type,jdbcType=INTEGER}
+        and isSchool = #{isSchool,jdbcType=INTEGER}
+        and isHot = 1
+        and yn = 1
+    </select>
+
+    <select id="getHotPlaceListByType" resultMap="placeMap" parameterType="java.util.Map">
+        select <include refid="baseSql"/>
+        from place
+        where type = #{type,jdbcType=INTEGER}
+        and isSchool = #{isSchool,jdbcType=INTEGER}
+        and isHot = 1
         and yn = 1
     </select>
 </mapper>

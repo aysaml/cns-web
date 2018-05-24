@@ -55,4 +55,37 @@ public class PlaceServiceImpl implements PlaceService {
         PageHelper.startPage(pageNum,pageSize);
         return placeDao.getPlaceListByType(map);
     }
+
+    /**
+     * 获取热点推荐数量
+     *
+     * @param spotType
+     * @param isInSchool
+     * @return
+     */
+    @Override
+    public int getHotPlaceCountByType(int spotType, int isInSchool) {
+        Map<String,Object> map = new HashMap<>(2);
+        map.put("type",spotType);
+        map.put("isSchool",isInSchool);
+        return placeDao.getHotPlaceCountByType(map);
+    }
+
+    /**
+     * 根据类型获取热点推荐地点列表
+     *
+     * @param pageNum
+     * @param pageSize
+     * @param spotType
+     * @param isInSchool
+     * @return
+     */
+    @Override
+    public List<Place> getHotPlaceListByType(int pageNum, int pageSize, int spotType, int isInSchool) {
+        Map<String,Object> map = new HashMap<>(3);
+        map.put("type",spotType);
+        map.put("isSchool",isInSchool);
+        PageHelper.startPage(pageNum,pageSize);
+        return placeDao.getHotPlaceListByType(map);
+    }
 }

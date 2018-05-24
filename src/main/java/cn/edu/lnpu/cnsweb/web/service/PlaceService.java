@@ -29,4 +29,22 @@ public interface PlaceService {
      * @return
      */
     List<Place> getPlaceListByType(int pageNum, int pageSize, int spotType,int isInSchool);
+
+    /**
+     * 获取热点推荐数量
+     * @param spotType
+     * @param isInSchool
+     * @return
+     */
+    int getHotPlaceCountByType(int spotType, int isInSchool);
+
+    /**
+     * 根据类型获取热点推荐地点列表
+     * @param pageNum
+     * @param pageSize
+     * @param spotType
+     * @param isInSchool
+     * @return
+     */
+    List<Place> getHotPlaceListByType(int pageNum, int pageSize, int spotType, int isInSchool);
 }

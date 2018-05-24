@@ -25,4 +25,18 @@ public interface PlaceDao {
      * @return
      */
     List<Place> getPlaceListByType(Map<String,Object> map);
+
+    /**
+     * 根据地点类型获取热点地点数量
+     * @param map
+     * @return
+     */
+    int getHotPlaceCountByType(Map<String,Object> map);
+
+    /**
+     * 根据地点类型获取热点推荐地点列表
+     * @param map
+     * @return
+     */
+    List<Place> getHotPlaceListByType(Map<String,Object> map);
 }

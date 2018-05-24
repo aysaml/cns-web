@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>热点推荐</title>
+    <meta name="keywords" content="收录地点">
+    <meta name="description" content="收录地点">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- include main css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/cns/css/slick.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/cns/css/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/cns/css/jquery.mmenu.all.css}"/>
+    <link rel="stylesheet" th:href="@{/cns/css/animate.min.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/cns/css/style.css}"/>
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/cns/css/pagination.css}">-->
+    <!--[if lt IE 9]>
+    <script th:src="@{http://apps.bdimg.com/libs/html5shiv/r29/html5.min.js}"></script>
+    <script th:src="@{http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js}"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div>
+    <!--header-->
+    <div th:include="/common/header :: nav"></div>
+
+    <!--banner-->
+    <section class="banner">
+        <img th:src="@{/cns/images/probanner.jpg}" alt="" />
+    </section>
+
+
+
+
+
+
+</div>
+
+<!--面包屑导航 start-->
+<div class="mbx">
+    <div class="container">
+        <div class="nytit pull-left">热点推荐</div>
+        <menu class="menu pull-left" id="menu">
+            <div><a th:class="${isSchool == 0 } ? 'cur'" onclick="inSchool();">校内地点</a></div>
+            <div><a th:class="${isSchool == 1 } ? 'cur'" onclick="notInSchool();">校外周边</a></div>
+        </menu>
+        <div class="mbxwrap pull-right">
+            <a href="/home">首页</a> <span>/</span>
+            <a href="/hotSpot/inSchool?type=1">热点推荐</a> <span>/</span>
+            <em th:text="${isInSchool}"></em>
+        </div>
+    </div>
+</div>
+<!--面包屑导航 end-->
+
+
+
+<div class="nycon">
+    <div class="container">
+        <input id="totalCount" th:attr="value=${count}"  type="hidden">
+        <input id="type" th:attr="value=${type}"  type="hidden">
+        <input id="isSchool" th:attr="value=${isSchool}"  type="hidden">
+        <div class="pro">
+            <div class="twofenlei">
+                <a th:each="type,iterStat:${types}" th:text="${type.typeName}" th:attr="code=${type.code}" onclick="typeChang(this)"></a>
+            </div>
+            <ul class="procon clearfix" id="content">
+            </ul>
+            <div class="page">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--footer start-->
+<div th:include="/common/footer :: foot"></div>
+
+
+<!--footer end-->
+
+
+<!--移动端  Mmenu-->
+<div th:include="/common/mnav :: mnav"></div>
+
+
+
+
+
+
+
+
+
+<!--Include Js-->
+<script th:src="@{http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js}" type="text/javascript" charset="utf-8"></script>
+
+<!--移动端导航-->
+<script th:src="@{/cns/js/jquery.mmenu.all.min.js}" type="text/javascript" charset="utf-8"></script>
+
+<script th:src="@{/cns/js/public.js}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" th:src="@{/cns/js/slick.min.js}" ></script>
+<script type="text/javascript" th:src="@{/cns/js/hotSpot.js}"></script>
+<script th:src="@{/util/jquery.pagination.js}"></script>
+<!--placeholder-->
+<script th:src="@{/cns/js/jquery.placeholder.min.js}" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/util/common.js}"></script>
+<script type="text/javascript">
+    $(function(){ $('input, textarea').placeholder(); });
+</script>
+</body>
+</html>
