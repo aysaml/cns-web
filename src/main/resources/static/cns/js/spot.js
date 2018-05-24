@@ -1,5 +1,5 @@
 var currentPage = 1;
-var pageSize = 3;
+var pageSize = 8;
 
 $(function(){
     init();
@@ -45,13 +45,23 @@ function init() {
                             var htm = "";
                             var jsonData = data.data;
                             $.each(jsonData,function (i,value){
-                                var html = "<li class='animated fadeInRight'>" +
-                                    "<div class='pic'><a href='/spot/detail?id="+ value.id +"'><img class='vcenter' src='"+ value.img +"' alt='' /></a></div>" +
-                                    "<a href='/spot/detail?id="+ value.id +"' class='protit'>" +
-                                    "<span>"+ value.placeNameCh +"</span>" +
-                                    "</a>" +
-                                    "</li>";
-                                htm += html;
+                                if(i != 0 && i%3 == 0){
+                                    var html = "<li class='animated fadeInRight' style='margin-right: 0px;'>" +
+                                        "<div class='pic'><a href='/spot/detail?id="+ value.id +"'><img class='vcenter' src='"+ value.img +"' alt='' /></a></div>" +
+                                        "<a href='/spot/detail?id="+ value.id +"' class='protit'>" +
+                                        "<span>"+ value.placeNameCh +"</span>" +
+                                        "</a>" +
+                                        "</li>";
+                                    htm += html;
+                                }else{
+                                    var html = "<li class='animated fadeInRight'>" +
+                                        "<div class='pic'><a href='/spot/detail?id="+ value.id +"'><img class='vcenter' src='"+ value.img +"' alt='' /></a></div>" +
+                                        "<a href='/spot/detail?id="+ value.id +"' class='protit'>" +
+                                        "<span>"+ value.placeNameCh +"</span>" +
+                                        "</a>" +
+                                        "</li>";
+                                    htm += html;
+                                }
                             });
 
 
@@ -73,13 +83,23 @@ function init() {
             var htm = "";
             var jsonData = data.data;
             $.each(jsonData,function (i,value){
-                var html = "<li class='animated fadeInRight'>" +
-                    "<div class='pic'><a href='/spot/detail?id="+ value.id +"'><img class='vcenter' src='"+ value.img +"' alt='' /></a></div>" +
-                    "<a href='/spot/detail?id="+ value.id +"' class='protit'>" +
-                    "<span>"+ value.placeNameCh +"</span>" +
-                    "</a>" +
-                    "</li>";
-                htm += html;
+                if(i != 0 && i%3 == 0){
+                    var html = "<li class='animated fadeInRight' style='margin-right: 0px;'>" +
+                        "<div class='pic'><a href='/spot/detail?id="+ value.id +"'><img class='vcenter' src='"+ value.img +"' alt='' /></a></div>" +
+                        "<a href='/spot/detail?id="+ value.id +"' class='protit'>" +
+                        "<span>"+ value.placeNameCh +"</span>" +
+                        "</a>" +
+                        "</li>";
+                    htm += html;
+                }else{
+                    var html = "<li class='animated fadeInRight'>" +
+                        "<div class='pic'><a href='/spot/detail?id="+ value.id +"'><img class='vcenter' src='"+ value.img +"' alt='' /></a></div>" +
+                        "<a href='/spot/detail?id="+ value.id +"' class='protit'>" +
+                        "<span>"+ value.placeNameCh +"</span>" +
+                        "</a>" +
+                        "</li>";
+                    htm += html;
+                }
             });
             $("#content").append(htm);
         }else{
