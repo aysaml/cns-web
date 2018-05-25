@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.lnpu.cnsweb.web.dao.GuideDao">
+
+    <resultMap id="baseMap" type="cn.edu.lnpu.cnsweb.web.model.GuideVo">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getGuideBaseDetailByPlaceId" parameterType="Long" resultMap="baseMap">
+        select g.id,u.name,u.phone
+        from guide g
+        inner join t_user u on g.userId = u.id
+        where g.placeId = #{spotId,jdbcType=BIGINT}
+        and g.yn = 1
+    </select>
+</mapper>

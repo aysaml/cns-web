@@ -1,6 +1,7 @@
 package cn.edu.lnpu.cnsweb.web.dao;
 
 import cn.edu.lnpu.cnsweb.web.model.Place;
+import cn.edu.lnpu.cnsweb.web.model.PlaceVo;
 
 import java.util.List;
 import java.util.Map;
@@ -39,4 +40,11 @@ public interface PlaceDao {
      * @return
      */
     List<Place> getHotPlaceListByType(Map<String,Object> map);
+
+    /**
+     *根据地点id获得地点详情vo对象
+     * @param spotId
+     * @return
+     */
+    PlaceVo getPlaceDetailById(Long spotId);
 }

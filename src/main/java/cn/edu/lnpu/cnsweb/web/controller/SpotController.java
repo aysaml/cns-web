@@ -3,8 +3,11 @@ package cn.edu.lnpu.cnsweb.web.controller;
 import cn.edu.lnpu.cnsweb.common.ConstantState;
 import cn.edu.lnpu.cnsweb.common.JsonResult;
 import cn.edu.lnpu.cnsweb.common.StringUtils;
+import cn.edu.lnpu.cnsweb.web.model.GuideVo;
 import cn.edu.lnpu.cnsweb.web.model.Place;
+import cn.edu.lnpu.cnsweb.web.model.PlaceVo;
 import cn.edu.lnpu.cnsweb.web.model.SpotType;
+import cn.edu.lnpu.cnsweb.web.service.GuideService;
 import cn.edu.lnpu.cnsweb.web.service.PlaceService;
 import cn.edu.lnpu.cnsweb.web.service.SpotTypeService;
 import org.slf4j.Logger;
@@ -36,6 +39,9 @@ public class SpotController {
 
     @Autowired
     private SpotTypeService spotTypeService;
+
+    @Autowired
+    private GuideService guideService;
 
     @RequestMapping("/inSchool")
     public String inSchoolSpotPage(@RequestParam("type") String type,Model model){
@@ -139,9 +145,45 @@ public class SpotController {
         try{
             typeList = spotTypeService.getSpotTypeList();
         }catch (Exception e){
-            logger.error("获取地点类型数据字典异常");
+            logger.error("获取地点类型数据字典异常:",e.getMessage());
             e.printStackTrace();
         }
         return typeList;
+    }
+
+    /**
+     * 地点详情页面
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping("/detail")
+    public String spotDetail(@RequestParam("id") String id,Model model ){
+        Long spotId = null;
+        if(StringUtils.isNotEmpty(id)){
+            spotId = Long.parseLong(id);
+        }
+        PlaceVo place = null;
+        List<GuideVo> guides = null;
+        try{
+            place = placeService.getSpotDetailById(spotId);
+            guides = guideService.getGuideBaseDetailByPlaceId(spotId);
+            place.setGuides(guides);
+        }catch (Exception e){
+            logger.error("查询地点详情异常：",e.getMessage());
+            e.printStackTrace();
+        }
+        model.addAttribute("spot",place);
+        return "detail";
+    }
+
+    /**
+     * 地点导航页面
+     * @param id
+     * @param model
+     * @return
+     */
+    public String spotNavigation(@RequestParam("id") String id,Model model){
+        return "navigation";
     }
 }

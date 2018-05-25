@@ -8,6 +8,7 @@
         <result property="placeNameCh" column="placeNameCh" jdbcType="VARCHAR"/>
         <result property="placeNameEn" column="placeNameEn" jdbcType="VARCHAR"/>
         <result property="alias" column="alias" jdbcType="VARCHAR"/>
+        <result property="coordinate" column="coordinate" jdbcType="VARCHAR"/>
         <result property="isSchool" column="isSchool" jdbcType="INTEGER"/>
         <result property="isHot" column="isHot" jdbcType="INTEGER"/>
         <result property="type" column="type" jdbcType="INTEGER"/>
@@ -19,8 +20,20 @@
         <result property="img" column="img" jdbcType="VARCHAR"/>
     </resultMap>
 
+
+    <resultMap id="placeDetail" type="cn.edu.lnpu.cnsweb.web.model.PlaceVo">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="img" column="img" jdbcType="VARCHAR"/>
+        <result property="placeNameCh" column="placeNameCh" jdbcType="VARCHAR"/>
+        <result property="placeNameEn" column="placeNameEn" jdbcType="VARCHAR"/>
+        <result property="alias" column="alias" jdbcType="VARCHAR"/>
+        <result property="isSchool" column="isSchool" jdbcType="INTEGER"/>
+        <result property="type" column="type" jdbcType="INTEGER"/>
+        <result property="descr" column="descr" jdbcType="VARCHAR"/>
+        <result property="createTime" column="createTime" jdbcType="VARCHAR"/>
+    </resultMap>
     <sql id="baseSql">
-        id,placeNameCh,placeNameEn,alias,isSchool,isHot,type,descr,createTime,updateTime,operator,yn,img
+        id,placeNameCh,placeNameEn,alias,coordinate,isSchool,isHot,type,descr,createTime,updateTime,operator,yn,img
     </sql>
 
     <select id="getPlaceCountByType" resultType="Integer" parameterType="java.util.Map">
@@ -53,5 +66,12 @@
         and isSchool = #{isSchool,jdbcType=INTEGER}
         and isHot = 1
         and yn = 1
+    </select>
+
+    <select id="getPlaceDetailById" resultMap="placeDetail" parameterType="Long">
+        select p.id,p.img,p.placeNameCh,p.placeNameEn,p.alias,p.isSchool,p.type,p.updateTime,p.descr
+        from place p
+        where p.id = #{spotId,jdbcType=BIGINT}
+        and p.yn = 1
     </select>
 </mapper>

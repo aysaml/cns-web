@@ -1,6 +1,7 @@
 package cn.edu.lnpu.cnsweb.web.service;
 
 import cn.edu.lnpu.cnsweb.web.model.Place;
+import cn.edu.lnpu.cnsweb.web.model.PlaceVo;
 
 import java.util.List;
 
@@ -47,4 +48,11 @@ public interface PlaceService {
      * @return
      */
     List<Place> getHotPlaceListByType(int pageNum, int pageSize, int spotType, int isInSchool);
+
+    /**
+     * 根据地点id获取地点详情vo对象
+     * @param spotId
+     * @return
+     */
+    PlaceVo getSpotDetailById(Long spotId);
 }

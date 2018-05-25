@@ -2,11 +2,13 @@ package cn.edu.lnpu.cnsweb.web.service.impl;
 
 import cn.edu.lnpu.cnsweb.web.dao.PlaceDao;
 import cn.edu.lnpu.cnsweb.web.model.Place;
+import cn.edu.lnpu.cnsweb.web.model.PlaceVo;
 import cn.edu.lnpu.cnsweb.web.service.PlaceService;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,5 +89,22 @@ public class PlaceServiceImpl implements PlaceService {
         map.put("isSchool",isInSchool);
         PageHelper.startPage(pageNum,pageSize);
         return placeDao.getHotPlaceListByType(map);
+    }
+
+    /**
+     * 根据地点id获取地点详情vo对象
+     *
+     * @param spotId
+     * @return
+     */
+    @Override
+    public PlaceVo getSpotDetailById(Long spotId) {
+        PlaceVo placeVo = null;
+        try{
+            placeVo = placeDao.getPlaceDetailById(spotId);
+        }catch (Exception e){
+            throw e;
+        }
+        return placeVo;
     }
 }

@@ -1,39 +1,33 @@
 package cn.edu.lnpu.cnsweb.web.model;
 
+import java.util.List;
+
 /**
- * 地点
+ * 地点详情展示vo对象
  *
  * @author wangning113
- * @since 2018/5/22
+ * @since 2018/5/25
  */
-public class Place {
+public class PlaceVo {
     private Long id;
 
+    private String img;
+
     private String placeNameCh;
+
+    private List<GuideVo> guides;
 
     private String placeNameEn;
 
     private String alias;
 
-    private String coordinate;
-
     private int isSchool;
-
-    private int isHot;
 
     private int type;
 
-    private String descr;
+   private String updateTime;
 
-    private String createTime;
-
-    private String updateTime;
-
-    private String operator;
-
-    private int yn;
-
-    private String img;
+   private String descr;
 
     public Long getId() {
         return id;
@@ -43,12 +37,29 @@ public class Place {
         this.id = id;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     public String getPlaceNameCh() {
         return placeNameCh;
     }
 
     public void setPlaceNameCh(String placeNameCh) {
         this.placeNameCh = placeNameCh;
+    }
+
+
+    public List<GuideVo> getGuides() {
+        return guides;
+    }
+
+    public void setGuides(List<GuideVo> guides) {
+        this.guides = guides;
     }
 
     public String getPlaceNameEn() {
@@ -67,28 +78,12 @@ public class Place {
         this.alias = alias;
     }
 
-    public String getCoordinate() {
-        return coordinate;
-    }
-
-    public void setCoordinate(String coordinate) {
-        this.coordinate = coordinate;
-    }
-
     public int getIsSchool() {
         return isSchool;
     }
 
     public void setIsSchool(int isSchool) {
         this.isSchool = isSchool;
-    }
-
-    public int getIsHot() {
-        return isHot;
-    }
-
-    public void setIsHot(int isHot) {
-        this.isHot = isHot;
     }
 
     public int getType() {
@@ -99,22 +94,6 @@ public class Place {
         this.type = type;
     }
 
-    public String getDescr() {
-        return descr;
-    }
-
-    public void setDescr(String descr) {
-        this.descr = descr;
-    }
-
-    public String getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
-
     public String getUpdateTime() {
         return updateTime;
     }
@@ -123,27 +102,11 @@ public class Place {
         this.updateTime = updateTime;
     }
 
-    public String getOperator() {
-        return operator;
+    public String getDescr() {
+        return descr;
     }
 
-    public void setOperator(String operator) {
-        this.operator = operator;
-    }
-
-    public int getYn() {
-        return yn;
-    }
-
-    public void setYn(int yn) {
-        this.yn = yn;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
+    public void setDescr(String descr) {
+        this.descr = descr;
     }
 }
