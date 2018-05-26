@@ -16,6 +16,7 @@
 	<link rel="stylesheet" th:href="@{/cns/css/animate.min.css}" />
 	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/style.css}"/>
 	<link rel="stylesheet" th:href="@{/cns/css/jquery.mCustomScrollbar.css}" />
+	<link rel="stylesheet" th:href="@{/cns/css/lightbox.css}">
 
 	<!--[if lt IE 9]>
     <script th:src="@{http://apps.bdimg.com/libs/html5shiv/r29/html5.min.js}"></script>
@@ -45,7 +46,7 @@
 		<div class="nytit pull-left">地点详情</div>
 		<menu class="menu pull-left" id="menu">
 			<div><a onclick="spotNavigation();">地点导航图</a></div>
-			<div><a onclick="showErweima();">生成二维码</a></div>
+			<div><a id="qrbutton" rel="lightbox" class="cboxElement">生成二维码</a></div>
 		</menu>
 		<div class="mbxwrap pull-right">
 			<a href="/home">首页</a> <span>/</span>
@@ -144,6 +145,7 @@
 <!--placeholder-->
 <script th:src="@{/cns/js/jquery.placeholder.min.js}" type="text/javascript" charset="utf-8"></script>
 <script th:src="@{/util/common.js}"></script>
+<script th:src="@{/cns/js/lightbox.js}" type="text/javascript"></script>
 <script type="text/javascript">
 	$(function(){ $('input, textarea').placeholder(); });
 </script>
@@ -151,6 +153,12 @@
 	jQuery(function(){
 				jQuery(window).load(function(){
 					$("#cont1").mCustomScrollbar();
+					var id = $('#spotId').val;
+                    callService('POST','/spot/getQRcode',{"id":id},function (data) {
+                        if (data.state == 0000) {
+                            $('#qrbutton').attr('href', 'data:image/png;base64,' + data.data);
+                        }
+                    })
 				})
 			})
 </script>

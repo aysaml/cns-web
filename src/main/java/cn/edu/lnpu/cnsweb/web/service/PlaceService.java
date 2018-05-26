@@ -55,4 +55,10 @@ public interface PlaceService {
      * @return
      */
     PlaceVo getSpotDetailById(Long spotId);
+
+    /**
+     * 获取最新20条热点
+     * @return
+     */
+    List<PlaceVo> getHotPlaces();
 }

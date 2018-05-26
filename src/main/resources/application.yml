@@ -39,4 +39,5 @@ pagehelper:
     reasonable: true
     supportMethodsArguments: true
     params: count=countSql
-    returnPageInfo: check
+    returnPageInfo: check\
+QR_URL: http://192.168.191.3:8080/spot/detail?id=

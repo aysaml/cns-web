@@ -47,4 +47,10 @@ public interface PlaceDao {
      * @return
      */
     PlaceVo getPlaceDetailById(Long spotId);
+
+    /**
+     * 获取最新20条热点
+     * @return
+     */
+    List<PlaceVo> getHotPlaces();
 }

@@ -32,6 +32,12 @@
         <result property="descr" column="descr" jdbcType="VARCHAR"/>
         <result property="createTime" column="createTime" jdbcType="VARCHAR"/>
     </resultMap>
+
+    <resultMap id="hotPlace" type="cn.edu.lnpu.cnsweb.web.model.PlaceVo">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="img" column="img" jdbcType="VARCHAR"/>
+        <result property="placeNameCh" column="placeNameCh" jdbcType="VARCHAR"/>
+    </resultMap>
     <sql id="baseSql">
         id,placeNameCh,placeNameEn,alias,coordinate,isSchool,isHot,type,descr,createTime,updateTime,operator,yn,img
     </sql>
@@ -73,5 +79,14 @@
         from place p
         where p.id = #{spotId,jdbcType=BIGINT}
         and p.yn = 1
+    </select>
+
+    <select id="getHotPlaces" resultMap="hotPlace">
+        select id,img,placeNameCh
+        from place
+        where yn = 1
+        and isHot = 1
+        order by id desc
+        limit 0,20
     </select>
 </mapper>

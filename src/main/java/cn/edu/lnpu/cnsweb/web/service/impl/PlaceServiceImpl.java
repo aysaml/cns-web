@@ -107,4 +107,14 @@ public class PlaceServiceImpl implements PlaceService {
         }
         return placeVo;
     }
+
+    /**
+     * 获取最新20条热点
+     *
+     * @return
+     */
+    @Override
+    public List<PlaceVo> getHotPlaces() {
+        return placeDao.getHotPlaces();
+    }
 }

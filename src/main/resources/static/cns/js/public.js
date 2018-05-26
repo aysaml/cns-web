@@ -141,6 +141,65 @@ $(function(){
 	})
 })
 
+/*
+     * $.confirm({
+     *   content:      {string}  弹框内容，可为纯文本或html片段 （必须）
+     *   width:        {number}  弹框宽度
+     *   title:        {string}  弹框标题
+     *   btnText       {string}  确认按钮文本
+     *   btnCelText    {string}  取消按钮文本
+     *   containerCls: {string}  自定义弹框容器的 className
+     * })
+     */
+$.confirm = function(option) {
+    option || (option = {});
+
+    var setting = {
+        title: option.title || '确认',
+        width: option.width || 400,
+        // dragdrop: false,
+        containerCls: option.containerCls,
+        btnText: option.btnText || '确认',
+        btnCelText:option.btnCelText || '取消',
+        onSure: option.onSure || noop,
+        onCancel: option.onCancel || noop,
+        onClose: option.onClose || noop
+    }
+
+    var cont = option.content || '';
+    if (typeof option == 'string') {
+        var msg = '<p class="c-content">' + option + '</p>';
+    }
+
+    var buttons = '<div class="thick-btn btn-w">' +
+        '<a href="javascript:;" class="btn-a btn-red">' + setting.btnText + '</a>' +
+        '<a href="javascript:;" class="btn-a btn-cancel">' + setting.btnCelText + '</a>' +
+        '</div>';
+    setting.source = cont + buttons;
+
+    // 确定/取消按钮
+    var $dialog = $.dialog(setting)
+    var close = $dialog.data('close')
+    $dialog.find('.btn-red').click(function() {
+        if (setting.onSure()!=false) {
+            close();
+        }
+    });
+
+    $dialog.find('.btn-cancel').click(function() {
+        setting.onCancel();
+        close();
+    });
+
+    $dialog.find('.thickclose').click(function() {
+        setting.onClose();
+        close();
+    });
+
+    return $dialog;
+};
+
+
 
 
 
