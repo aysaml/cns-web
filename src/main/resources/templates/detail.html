@@ -147,15 +147,15 @@
         jQuery(window).load(function () {
             $("#cont1").mCustomScrollbar();
         })
-        window.onload = function () {
-            var id = $('#spotId').val;
-            callService('POST', '/spot/getQRcode', {"id": id}, function (data) {
-                if (data.state == 0000) {
-                    $('#qrbutton').attr('href', 'data:image/png;base64,' + data.data);
-                }
-            })
-        }
     })
+    window.onload = function () {
+        var id = $('#spotId').val;
+        callService('POST', '/spot/getQRcode', {"id": id}, function (data) {
+            if (data.state == 0000) {
+                $('#qrbutton').attr('href', 'data:image/png;base64,' + data.data);
+            }
+        })
+    }
 </script>
 </body>
 </html>
