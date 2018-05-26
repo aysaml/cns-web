@@ -149,7 +149,7 @@
         })
     })
     window.onload = function () {
-        var id = $('#spotId').val;
+        var id = $('#spotId').val();
         callService('POST', '/spot/getQRcode', {"id": id}, function (data) {
             if (data.state == 0000) {
                 $('#qrbutton').attr('href', 'data:image/png;base64,' + data.data);
