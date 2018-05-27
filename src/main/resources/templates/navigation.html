@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>地点图片展示</title>
+	<meta name="keywords" content="地点图片展示">
+	<meta name="description" content="地点图片展示">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	
+	<!-- include main css -->
+	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/slick.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/bootstrap.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/jquery.mmenu.all.css}"/>
+	<link rel="stylesheet" th:href="@{/cns/css/animate.min.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{/cns/css/style.css}"/>
+	<link rel="stylesheet" th:href="@{/cns/css/css.css}" />
+	<!--[if lt IE 9]>
+    <script th:src="@{http://apps.bdimg.com/libs/html5shiv/r29/html5.min.js}"></script>
+    <script th:src="@{http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js}"></script>
+    <![endif]-->
+	
+</head>
+<body>
+<div>
+	<!--header-->
+	<div th:include="/common/header :: nav"></div>
+	<!--banner-->
+	<section class="banner">
+		<img th:src="@{/cns/images/strbanner.jpg}" alt="" />
+	</section>
+	
+
+
+
+	
+		
+</div>
+	
+<!--面包屑导航 start-->
+<div class="mbx">
+	<div class="container">
+		<div class="mbxwrap pull-right">
+			<a href="/home">首页</a> <span>/</span>
+			<a href="/spot/inSchool?type=1">收录地点</a> <span>/</span>
+			<em>地点图片展示</em>
+		</div>
+	</div>
+</div>
+<!--面包屑导航 end-->
+
+
+
+<div class="nycon">
+	<div class="container">
+		<input id="coordinate" type="hidden" th:value="${place.coordinate}"/>
+		<div class="pro">
+			<div class="caseshow">
+				<div class="ctit" th:text="${place.placeNameCh}"></div>
+				<div class="ctxt">
+					<p th:text="${place.descr}"></p>
+				</div>
+				<div id="featured-area"> 
+					<ul> 
+						<li th:each="picture,iterStat:${place.pictures}"><div class="pic"><a><img class="vcenter" th:src="${picture.url}" alt="" /></a></div></li>
+						<button class="ban_r_btn"></button>
+						<button class="ban_l_btn"></button>
+					</ul> 
+				</div>
+				<!--移动端  案例-->
+				<div class="phonecase" th:each="picture,iterStat:${place.pictures}">
+					<div class="pic"><img th:src="${picture.url}" alt="" /></div>
+				</div>
+			</div>
+			<div class="prevnext clearfix">
+				<a href="/spot/inSchool?type=1" class="return pull-right">
+					返回列表
+				</a>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+
+<!--index news start-->
+<div class="innews">
+</div>
+<!--index news end-->
+
+
+<!--footer start-->
+<div th:include="/common/footer :: foot"></div>
+
+
+<!--footer end-->
+
+
+<!--移动端  Mmenu-->
+<div th:include="/common/mnav :: mnav"></div>
+
+
+
+
+
+
+	
+	
+	
+<!--Include Js-->
+<script th:src="@{http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js}" type="text/javascript" charset="utf-8"></script>
+
+<!--移动端导航-->
+<script th:src="@{/cns/js/jquery.mmenu.all.min.js}" type="text/javascript" charset="utf-8"></script>
+
+<script th:src="@{/cns/js/public.js}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" th:src="@{/cns/js/slick.min.js}" ></script>
+
+<!--placeholder-->
+<script th:src="@{/cns/js/jquery.placeholder.min.js}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function(){ $('input, textarea').placeholder(); });
+</script>
+<script th:src="@{/cns/js/jquery.easing.1.3.js}"></script>
+<script th:src="@{/cns/js/roundabout.min.js}"></script>
+<script th:src="@{/util/common.js}"></script>
+<script type="text/javascript">	
+
+	$(document).ready(function(){ 
+
+		/*调用*/
+		$('#featured-area ul').roundabout({
+			startingChild:1,
+			btnPrev: ".ban_r_btn", // 右按钮
+			btnNext: ".ban_l_btn", // 左按钮
+			autoplay:false,
+			autoplayDuration:4000,
+			easing: 'easeOutInCirc',
+			autoplayInitialDelay:0,
+			enableDrag: true,
+			duration: 600 //切换一张所花费的时间，而不是 每隔多少秒切换一张
+		});
+
+	});
+
+	</script> 
+</body>
+</html>

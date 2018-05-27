@@ -27,6 +27,7 @@
         <result property="placeNameCh" column="placeNameCh" jdbcType="VARCHAR"/>
         <result property="placeNameEn" column="placeNameEn" jdbcType="VARCHAR"/>
         <result property="alias" column="alias" jdbcType="VARCHAR"/>
+        <result property="coordinate" column="coordinate" jdbcType="VARCHAR"/>
         <result property="isSchool" column="isSchool" jdbcType="INTEGER"/>
         <result property="type" column="type" jdbcType="INTEGER"/>
         <result property="descr" column="descr" jdbcType="VARCHAR"/>
@@ -38,6 +39,14 @@
         <result property="img" column="img" jdbcType="VARCHAR"/>
         <result property="placeNameCh" column="placeNameCh" jdbcType="VARCHAR"/>
     </resultMap>
+
+    <resultMap id="navPlace" type="cn.edu.lnpu.cnsweb.web.model.NavigationPlaceVo">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="placeNameCh" column="placeNameCh" jdbcType="VARCHAR"/>
+        <result property="coordinate" column="coordinate" jdbcType="VARCHAR"/>
+        <result property="descr" column="descr" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <sql id="baseSql">
         id,placeNameCh,placeNameEn,alias,coordinate,isSchool,isHot,type,descr,createTime,updateTime,operator,yn,img
     </sql>
@@ -75,7 +84,7 @@
     </select>
 
     <select id="getPlaceDetailById" resultMap="placeDetail" parameterType="Long">
-        select p.id,p.img,p.placeNameCh,p.placeNameEn,p.alias,p.isSchool,p.type,p.updateTime,p.descr
+        select p.id,p.img,p.placeNameCh,p.placeNameEn,p.alias,p.coordinate,p.isSchool,p.type,p.updateTime,p.descr
         from place p
         where p.id = #{spotId,jdbcType=BIGINT}
         and p.yn = 1
@@ -88,5 +97,12 @@
         and isHot = 1
         order by id desc
         limit 0,20
+    </select>
+
+    <select id="getNavigationVoByPlaceId" parameterType="Long" resultMap="navPlace">
+        select id,placeNameCh,coordinate,descr
+        from place
+        where id = #{spotId,jdbcType=BIGINT}
+        and yn = 1
     </select>
 </mapper>

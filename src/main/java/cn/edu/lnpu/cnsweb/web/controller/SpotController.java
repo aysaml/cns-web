@@ -178,7 +178,7 @@ public class SpotController {
     }
 
     /**
-     * 地点导航页面
+     * 地点图片展示页面
      * @param id
      * @param model
      * @return

@@ -1,6 +1,7 @@
 package cn.edu.lnpu.cnsweb.web.service.impl;
 
 import cn.edu.lnpu.cnsweb.web.dao.PlaceDao;
+import cn.edu.lnpu.cnsweb.web.model.NavigationPlaceVo;
 import cn.edu.lnpu.cnsweb.web.model.Place;
 import cn.edu.lnpu.cnsweb.web.model.PlaceVo;
 import cn.edu.lnpu.cnsweb.web.service.PlaceService;
@@ -116,5 +117,16 @@ public class PlaceServiceImpl implements PlaceService {
     @Override
     public List<PlaceVo> getHotPlaces() {
         return placeDao.getHotPlaces();
+    }
+
+    /**
+     * 根据地点Id获得导航地点对象
+     *
+     * @param spotId
+     * @return
+     */
+    @Override
+    public NavigationPlaceVo getNavigationVoByPlaceId(Long spotId) {
+        return placeDao.getNavigationVoByPlaceId(spotId);
     }
 }

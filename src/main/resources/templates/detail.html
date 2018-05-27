@@ -42,8 +42,9 @@
     <div class="container">
         <div class="nytit pull-left">地点详情</div>
         <menu class="menu pull-left" id="menu">
-            <div><a onclick="spotNavigation();">地点导航图</a></div>
-            <div><a id="qrbutton" rel="lightbox" class="cboxElement">生成二维码</a></div>
+            <div><a onclick="showPictures();">精美照片展示</a></div>
+            <div><a onclick="SpotNavigation();">位置路线导航</a> </div>
+            <div><a id="qrbutton" rel="lightbox" class="cboxElement">生成导航二维码</a></div>
         </menu>
         <div class="mbxwrap pull-right">
             <a href="/home">首页</a> <span>/</span>
@@ -59,6 +60,8 @@
 
     <div class="container">
         <input id="spotId" type="hidden" th:value="${spot.id}">
+        <input id="coordinate" type="hidden" th:value="${spot.coordinate}"/>
+        <input id="spotName" type="hidden" th:value="${spot.placeNameCh}">
         <div class="pro proshow">
             <div class="pshowcon">
                 <div class="pshowc clearfix">
@@ -155,6 +158,22 @@
                 $('#qrbutton').attr('href', 'data:image/png;base64,' + data.data);
             }
         })
+    }
+
+    function showPictures() {
+        var id = $('#spotId').val();
+        location.href = '/spot/navigation?id='+ id;
+    }
+    
+    function SpotNavigation() {
+        var destination = window.prompt("请输入您的目的地","");
+        if(destination != null && destination != ""){
+           /* var latlng = $('#coordinate').val();*/
+            var name = $('#spotName').val();
+           window.open("http://api.map.baidu.com/direction?origin=" + name +"&destination="+ destination +"&mode=walking&region=抚顺&output=html&src=辽宁石油化工大学|校园导航系统",'_blank');
+        }else{
+            alert("抱歉，目的地不能为空！");
+        }
     }
 </script>
 </body>

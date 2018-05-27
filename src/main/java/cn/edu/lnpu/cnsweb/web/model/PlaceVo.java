@@ -21,6 +21,8 @@ public class PlaceVo {
 
     private String alias;
 
+    private String coordinate;
+
     private int isSchool;
 
     private int type;
@@ -76,6 +78,14 @@ public class PlaceVo {
 
     public void setAlias(String alias) {
         this.alias = alias;
+    }
+
+    public String getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(String coordinate) {
+        this.coordinate = coordinate;
     }
 
     public int getIsSchool() {

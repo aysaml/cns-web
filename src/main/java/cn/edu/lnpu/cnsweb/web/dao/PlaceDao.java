@@ -1,5 +1,6 @@
 package cn.edu.lnpu.cnsweb.web.dao;
 
+import cn.edu.lnpu.cnsweb.web.model.NavigationPlaceVo;
 import cn.edu.lnpu.cnsweb.web.model.Place;
 import cn.edu.lnpu.cnsweb.web.model.PlaceVo;
 
@@ -53,4 +54,11 @@ public interface PlaceDao {
      * @return
      */
     List<PlaceVo> getHotPlaces();
+
+    /**
+     * 根据地点Id获得导航对象
+     * @param spotId
+     * @return
+     */
+    NavigationPlaceVo getNavigationVoByPlaceId(Long spotId);
 }
