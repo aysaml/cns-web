@@ -61,7 +61,7 @@
     <div class="container">
         <input id="spotId" type="hidden" th:value="${spot.id}">
         <input id="coordinate" type="hidden" th:value="${spot.coordinate}"/>
-        <input id="spotName" type="hidden" th:value="${spot.placeNameCh}">
+        <input id="spotName" type="hidden" th:value="${spot.alias}">
         <div class="pro proshow">
             <div class="pshowcon">
                 <div class="pshowc clearfix">
@@ -80,7 +80,7 @@
                         </p>
                         <span>英文名称</span>
                         <p th:text="${spot.placeNameEn}"></p>
-                        <span>地点别名</span>
+                        <span>地点全称</span>
                         <p th:text="${spot.alias}"></p>
                         <span>地点范围</span>
                         <p th:text="${spot.isSchool == 0} ? '校内地点' : '校外周边'"></p>
