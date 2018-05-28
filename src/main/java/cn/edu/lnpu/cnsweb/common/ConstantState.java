@@ -22,7 +22,11 @@ public enum ConstantState {
     STATUS_ERROR(3000,"状态错误"),
 
     INVALID_DATA(-1, "无效数据")  ,
-    INVALID_STATUS(3001,"无效状态");
+    INVALID_STATUS(3001,"无效状态"),
+    UPLOAD_FILE_SUCCESS(4000,"文件上传成功"),
+    UPLOAD_FILE_FAILED(4001,"文件上传失败"),
+    UPLOAD_FILE_PART_FAILED(4002,"部分文件上传失败"),
+    UPLOAD_FILE_EMPTY(4003,"上传文件为空");
 
     int state ;
     String desc ;
