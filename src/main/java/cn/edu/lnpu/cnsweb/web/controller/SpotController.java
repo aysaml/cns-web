@@ -177,13 +177,8 @@ public class SpotController {
         return "detail";
     }
 
-    /**
-     * 地点图片展示页面
-     * @param id
-     * @param model
-     * @return
-     */
-    public String spotNavigation(@RequestParam("id") String id,Model model){
-        return "navigation";
+    @RequestMapping("/test")
+    public String testUpload(){
+        return "fileUploadTest";
     }
 }

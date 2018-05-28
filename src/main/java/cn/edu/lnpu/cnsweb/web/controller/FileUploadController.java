@@ -1,105 +1,87 @@
 package cn.edu.lnpu.cnsweb.web.controller;
 
+
+import cn.edu.lnpu.cnsweb.common.AliOSSUtil;
 import cn.edu.lnpu.cnsweb.common.ConstantState;
 import cn.edu.lnpu.cnsweb.common.JsonResult;
-import org.springframework.stereotype.Controller;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.util.ClassUtils;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
- * 文件上传controller
+ * 文件上传controller(上传至阿里云oss)
  *
  * @author wangning113
  * @since 2018/5/28
  */
-@Controller
+@RestController
 public class FileUploadController {
+
+  private static Logger logger = LoggerFactory.getLogger(FileUploadController.class);
   /**
-   * 文件上传实现方法（单文件上传）
-   *
-   * @param file
-   * @return
+   * 本地存放目录
    */
-  @RequestMapping(value = "/upload", method = RequestMethod.POST)
-  @ResponseBody
-  public JsonResult upload(@RequestParam("file") MultipartFile file) {
+  private static String uoloadPath = ClassUtils.getDefaultClassLoader().getResource("").getPath() + "upload/";
+
+  @PostMapping("/upload")
+  public JsonResult imageUpload(HttpServletRequest request, @RequestParam("file") MultipartFile file) {
     JsonResult result = new JsonResult();
     if (!file.isEmpty()) {
       try {
-        BufferedOutputStream out =
-            new BufferedOutputStream(new FileOutputStream(new File(file.getOriginalFilename())));
+        // 上传文件信息
+        logger.info("OriginalFilename：" + file.getOriginalFilename());
+        logger.info("ContentType：" + file.getContentType());
+        logger.info("Name：" + file.getName());
+        logger.info("Size：" + file.getSize());
+        //TODO:文件大小、名称、类型检查的业务处理
+
+        // 检查上传目录
+        File targetFile = new File(uoloadPath);
+        if (!targetFile.exists()) {
+          targetFile.mkdirs();
+        }
+
+        // 实例化输出流
+        BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(uoloadPath + file.getOriginalFilename()));
         out.write(file.getBytes());
         out.flush();
         out.close();
-        result.setState(ConstantState.UPLOAD_FILE_SUCCESS.getCode());
-        result.setMessage(ConstantState.UPLOAD_FILE_SUCCESS.getMessage());
-        result.setData("/file/" + file.getName());
-      } catch (Exception e) {
-        e.printStackTrace();
-        result.setState(ConstantState.UPLOAD_FILE_FAILED.getCode());
-        result.setMessage(ConstantState.UPLOAD_FILE_FAILED.getMessage());
-        result.setData(null);
-        return result;
-      }
-      return result;
-    } else {
-      result.setState(ConstantState.UPLOAD_FILE_EMPTY.getCode());
-      result.setMessage(ConstantState.UPLOAD_FILE_EMPTY.getMessage());
-      result.setData(null);
-      return result;
-    }
-  }
 
-  /**
-   * 多文件上传 主要是使用了MultipartHttpServletRequest和MultipartFile
-   *
-   * @param request
-   * @return
-   */
-  @RequestMapping(value = "/upload/batch", method = RequestMethod.POST)
-  public @ResponseBody JsonResult batchUpload(HttpServletRequest request) {
-    JsonResult result = new JsonResult();
-    List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
-    MultipartFile file = null;
-    BufferedOutputStream stream = null;
-    /**用于存放多个文件的路径*/
-    List<String> fileNameList = new ArrayList<>(i);
-    for (int i = 0; i < files.size(); ++i) {
-      file = files.get(i);
-      if (!file.isEmpty()) {
-        try {
-          byte[] bytes = file.getBytes();
-          stream =
-              new BufferedOutputStream(new FileOutputStream(new File(file.getOriginalFilename())));
-          stream.write(bytes);
-          stream.close();
-          fileNameList.add("/file/"+file.getName());
-        } catch (Exception e) {
-          stream = null;
-          result.setState(ConstantState.UPLOAD_FILE_PART_FAILED.getCode());
-          result.setMessage(ConstantState.UPLOAD_FILE_PART_FAILED.getMessage());
-          result.setData("文件:" + files.get(i).getName() + "上传失败！");
+        // 上传到OSS
+        String url = AliOSSUtil.uploadLocalFile(new File(uoloadPath + file.getOriginalFilename()), "/upload/avatar/");
+        if (url == null) {
+          result.setState(ConstantState.UPLOAD_FILE_FAILED.getCode());
+          result.setData(ConstantState.UPLOAD_FILE_FAILED.getMessage());
+          result.setData(null);
           return result;
         }
-      } else {
-        result.setState(ConstantState.UPLOAD_FILE_EMPTY.getCode());
-        result.setMessage(ConstantState.UPLOAD_FILE_EMPTY.getMessage());
+        logger.info("上传完毕,访问地址:"+url);
+        result.setState(ConstantState.UPLOAD_FILE_SUCCESS.getCode());
+        result.setData(ConstantState.UPLOAD_FILE_SUCCESS.getMessage());
+        result.setData("https://"+url);
+        return result;
+      } catch (IOException e) {
+        e.printStackTrace();
+        result.setState(ConstantState.UPLOAD_FILE_FAILED.getCode());
+        result.setData(ConstantState.UPLOAD_FILE_FAILED.getMessage());
         result.setData(null);
         return result;
       }
     }
-      result.setState(ConstantState.UPLOAD_FILE_SUCCESS.getCode());
-      result.setMessage(ConstantState.UPLOAD_FILE_SUCCESS.getMessage());
-      result.setData(fileNameList);
+    result.setState(ConstantState.UPLOAD_FILE_EMPTY.getCode());
+    result.setData(ConstantState.UPLOAD_FILE_EMPTY.getMessage());
+    result.setData(null);
     return result;
   }
 }
