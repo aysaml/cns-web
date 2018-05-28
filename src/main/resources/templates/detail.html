@@ -73,10 +73,8 @@
                         <span>导游</span>
                         <p th:each="guide,iterStat:${spot.guides}">
                             姓名：<input readonly="true" th:value="${ guide.name}" width="50px;"></br>
-                            电话：<input readonly="true" placeholder="登录后可见" width="50px"
-                                      th:if="${session.username == null }">
-                            <input readonly="true" th:value="${ guide.phone}" width="50px"
-                                   th:if="${session.username != null}"></br>
+                            电话：<input readonly="true" placeholder="登录后可见" width="50px" th:if="${session.username == null }">
+                            <input readonly="true" th:value="${ guide.phone}" width="50px" th:if="${session.username != null}"></br>
                         </p>
                         <span>英文名称</span>
                         <p th:text="${spot.placeNameEn}"></p>
