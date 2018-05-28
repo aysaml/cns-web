@@ -62,25 +62,25 @@ public class FileUploadController {
         String url = AliOSSUtil.uploadLocalFile(new File(uoloadPath + file.getOriginalFilename()), "/upload/avatar/");
         if (url == null) {
           result.setState(ConstantState.UPLOAD_FILE_FAILED.getCode());
-          result.setData(ConstantState.UPLOAD_FILE_FAILED.getMessage());
+          result.setMessage(ConstantState.UPLOAD_FILE_FAILED.getMessage());
           result.setData(null);
           return result;
         }
         logger.info("上传完毕,访问地址:"+url);
         result.setState(ConstantState.UPLOAD_FILE_SUCCESS.getCode());
-        result.setData(ConstantState.UPLOAD_FILE_SUCCESS.getMessage());
+        result.setMessage(ConstantState.UPLOAD_FILE_SUCCESS.getMessage());
         result.setData("https://"+url);
         return result;
       } catch (IOException e) {
         e.printStackTrace();
         result.setState(ConstantState.UPLOAD_FILE_FAILED.getCode());
-        result.setData(ConstantState.UPLOAD_FILE_FAILED.getMessage());
+        result.setMessage(ConstantState.UPLOAD_FILE_FAILED.getMessage());
         result.setData(null);
         return result;
       }
     }
     result.setState(ConstantState.UPLOAD_FILE_EMPTY.getCode());
-    result.setData(ConstantState.UPLOAD_FILE_EMPTY.getMessage());
+    result.setMessage(ConstantState.UPLOAD_FILE_EMPTY.getMessage());
     result.setData(null);
     return result;
   }
