@@ -48,7 +48,7 @@ public class News {
     }
 
     public void setOutline(String outline) {
-        outline = outline;
+        this.outline = outline;
     }
 
     public String getContent() {
