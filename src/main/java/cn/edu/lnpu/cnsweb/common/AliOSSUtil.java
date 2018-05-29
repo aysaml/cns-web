@@ -88,7 +88,7 @@ public class AliOSSUtil {
             PutObjectResult result = ossClient.putObject(new PutObjectRequest(BUCKET_NAME, filePath, file));
             if (null != result) {
                 // 拼装访问地址
-                return FILE_HOST + filePath;
+                return FILE_HOST + "/"+filePath;
             } else {
                 return null;
             }

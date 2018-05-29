@@ -59,7 +59,7 @@ public class FileUploadController {
         out.close();
 
         // 上传到OSS
-        String url = AliOSSUtil.uploadLocalFile(new File(uoloadPath + file.getOriginalFilename()), "/upload/avatar/");
+        String url = AliOSSUtil.uploadLocalFile(new File(uoloadPath + file.getOriginalFilename()), "upload/avatar/");
         if (url == null) {
           result.setState(ConstantState.UPLOAD_FILE_FAILED.getCode());
           result.setMessage(ConstantState.UPLOAD_FILE_FAILED.getMessage());
