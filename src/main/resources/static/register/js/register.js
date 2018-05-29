@@ -118,7 +118,7 @@ layui.use('layer', function () {
                         $('.success').fadeIn(1000);
                         $('.success').html(data.data+"<br/>3秒钟后为您跳转到登录页面...");
                         //跳转操作
-                        setTimeout( "location.href = '/home'",3000);
+                        setTimeout( "location.href = '/login'",3000);
                     } else {
                         var message = data.data;
                         var index = layer.alert(message, { icon: 6, time: 4000, offset: 't', closeBtn: 0, title: '提示', btn: [], anim: 2, shade: 0 });

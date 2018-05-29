@@ -16,6 +16,7 @@
     <link rel="stylesheet" th:href="@{/cns/css/animate.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/cns/css/style.css}"/>
     <link rel="stylesheet" th:href="@{/cns/css/jquery.mCustomScrollbar.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webuploader/webuploader.css}">
 
     <!--[if lt IE 9]>
     <script th:src="@{http://apps.bdimg.com/libs/html5shiv/r29/html5.min.js}"></script>
@@ -70,7 +71,7 @@
                     <div class="inquirycon pull-left">
                         <div>
                                 <label><img id="headImg" th:src="${guide.imgUrl}" width="150" height="200"></label></br>
-                                <label class="la7"><input type="button" value="上传头像"></label>
+                            <label class="la7"><a id="head-upload" uploadType="imageFile" type="button" >上传头像</a></label>
                                 <label></label>
                                 <label></label>
                                 <label><span>姓名</span><input id="name" type="text" th:value="${guide.name}" /><em>*</em></label>
@@ -114,11 +115,12 @@
 <script type="text/javascript" th:src="@{/cns/js/jquery.mCustomScrollbar.concat.min.js}"></script>
 <script th:src="@{/cns/js/public.js}" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" th:src="@{/cns/js/slick.min.js}"></script>
-
+<script type="text/javascript" th:src="@{/webuploader/webuploader.js}"></script>
 <!--placeholder-->
 <script th:src="@{/cns/js/jquery.placeholder.min.js}" type="text/javascript" charset="utf-8"></script>
 <script th:src="@{/util/common.js}"></script>
 <script th:src="@{/cns/js/apply.js}"></script>
+<script th:src="@{/util/upload-head.js}"></script>
 <script type="text/javascript">
     $(function () {
         $('input, textarea').placeholder();

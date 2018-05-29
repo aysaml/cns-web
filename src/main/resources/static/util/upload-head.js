@@ -3,8 +3,8 @@
 (function ($) {
     var headUploader;
     headUploader = WebUploader.create({
-        swf: '/static/zhaopin/webuploader/Uploader.swf',
-        server: '/uploadFile/upload',
+        swf: 'static/webuploader/Uploader.swf',
+        server: '/upload',
         pick: '#head-upload',
         fileNumLimit: 1,
         fileSizeLimit: 10 * 1024 * 1024,    // 10 M
@@ -45,38 +45,16 @@
 // 文件上传失败，显示上传出错。
     headUploader.on('error', function (type) {
         if (type == "Q_TYPE_DENIED") {
-            errorTip("请上传JPG、PNG、GIF、BMP格式文件");
+            alert("请上传JPG、PNG、GIF、BMP格式文件");
         } else if (type == "Q_EXCEED_SIZE_LIMIT") {
-            errorTip("头像大小不能超过10M哦！");
+            alert("头像大小不能超过10M哦！");
         }else {
-            errorTip("上传出错！请检查后重新上传!");
+            alert("上传出错！请检查后重新上传!");
         }
     });
 
     headUploader.on('uploadAccept', function (object, ret) {
-        var dataObj;
-        var flag = false;
-        var jssAddress;
-        try {
-            dataObj = eval("(" + ret._raw + ")");
-            flag = dataObj.error;
-            if(dataObj.fileKey){
-                jssAddress = dataObj.jssAddress;
-                if(jssAddress != null){
-                    //$("#resume-upload-img").attr("src","//storage.jd.com/doc.campus.com/"+dataObj.fileKey);
-                    //$("#photoUrl").val("//storage.jd.com/doc.campus.com/"+dataObj.fileKey);
-                    $("#resume-upload-img").attr("src",dataObj.url);
-                   // $("#imgUrl").val("//"+jssAddress+"/rec.jd.com/"+dataObj.fileKey);
-                }
-
-            }
-        } catch (e) {
-            flag = false;
-        } finally {
-            if (!flag) {
-                return false;
-            }
-        }
+                    $("#headImg").attr("src",ret.data);
     });
 
 // 完成上传完了，成功或者失败，先删除进度条。

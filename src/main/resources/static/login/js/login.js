@@ -206,7 +206,11 @@ function doLogin() {
     var url = '/doLogin';
     callService('POST',url,{'username':username,'password':password},function (data){
         if(data.state == 0){
-            self.location=document.referrer;
+            if(document.referrer == "http://cns.lnpu.edu.cn/login" || document.referrer == "http://cns.lnpu.edu.cn/register"){
+                self.location = "/home";
+            }else{
+                self.location=document.referrer;
+            }
         }else{
             alert(data.data);
         }
