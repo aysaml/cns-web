@@ -26,7 +26,8 @@ public enum ConstantState {
     UPLOAD_FILE_SUCCESS(4000,"文件上传成功"),
     UPLOAD_FILE_FAILED(4001,"文件上传失败"),
     UPLOAD_FILE_PART_FAILED(4002,"部分文件上传失败"),
-    UPLOAD_FILE_EMPTY(4003,"上传文件为空");
+    UPLOAD_FILE_EMPTY(4003,"上传文件为空"),
+    APPLY_DUPLICATE(4004,"重复申请");
 
     int state ;
     String desc ;

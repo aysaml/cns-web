@@ -2,6 +2,7 @@ package cn.edu.lnpu.cnsweb.web.service.impl;
 
 import cn.edu.lnpu.cnsweb.common.StringUtils;
 import cn.edu.lnpu.cnsweb.web.dao.UserDao;
+import cn.edu.lnpu.cnsweb.web.model.Guide;
 import cn.edu.lnpu.cnsweb.web.model.User;
 import cn.edu.lnpu.cnsweb.web.model.UserVo;
 import cn.edu.lnpu.cnsweb.web.service.UserService;
@@ -85,5 +86,16 @@ public class UserServiceImpl implements UserService {
             throw new SQLException(e);
         }
         return user;
+    }
+
+    /**
+     * 更新导游相关用户信息
+     *
+     * @param guide
+     * @return
+     */
+    @Override
+    public int updateUserInfo(Guide guide) {
+        return userDao.updateUserInfo(guide);
     }
 }

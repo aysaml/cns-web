@@ -1,5 +1,6 @@
 package cn.edu.lnpu.cnsweb.web.service;
 
+import cn.edu.lnpu.cnsweb.web.model.Guide;
 import cn.edu.lnpu.cnsweb.web.model.User;
 import cn.edu.lnpu.cnsweb.web.model.UserVo;
 
@@ -35,4 +36,11 @@ public interface UserService {
      * @throws SQLException
      */
     User getUserByUsername(String username) throws SQLException;
+
+    /**
+     * 更新导游相关用户信息
+     * @param guide
+     * @return
+     */
+    int updateUserInfo(Guide guide);
 }

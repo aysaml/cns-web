@@ -1,5 +1,6 @@
 package cn.edu.lnpu.cnsweb.web.dao;
 
+import cn.edu.lnpu.cnsweb.web.model.Guide;
 import cn.edu.lnpu.cnsweb.web.model.User;
 import cn.edu.lnpu.cnsweb.web.model.UserVo;
 
@@ -32,4 +33,11 @@ public interface UserDao {
      * @return
      */
     User selectUserByUsername(String username);
+
+    /**
+     * 更新导游相关用户信息
+     * @param guide
+     * @return
+     */
+    int updateUserInfo(Guide guide);
 }

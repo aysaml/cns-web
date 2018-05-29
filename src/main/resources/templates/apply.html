@@ -16,7 +16,6 @@
     <link rel="stylesheet" th:href="@{/cns/css/animate.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/cns/css/style.css}"/>
     <link rel="stylesheet" th:href="@{/cns/css/jquery.mCustomScrollbar.css}"/>
-    <link rel="stylesheet" th:href="@{/cns/css/lightbox.css}">
 
     <!--[if lt IE 9]>
     <script th:src="@{http://apps.bdimg.com/libs/html5shiv/r29/html5.min.js}"></script>
@@ -56,52 +55,37 @@
 <div class="nycon">
 
     <div class="container">
-        <input id="spotId" type="hidden" th:value="${spot.id}">
-        <input id="coordinate" type="hidden" th:value="${spot.coordinate}"/>
-        <input id="spotName" type="hidden" th:value="${spot.alias}">
+        <input type="hidden" id="placeId" th:value="${placeId}">
+        <input type="hidden" id="placeName" th:value="${placeName}">
         <div class="pro proshow">
             <div class="pshowcon">
                 <div class="pshowc clearfix">
-                    <div class="psl pull-left pic">
-                        <img class="vcenter" th:src="${spot.img}" alt=""/>
-                    </div>
-                    <div class="psr pull-right" id="cont1">
-                        <h3 th:text="${spot.placeNameCh}"></h3>
-                        <span>导游</span>
-                        <p th:each="guide,iterStat:${spot.guides}">
-                            姓名：<input readonly="true" th:value="${ guide.name}" width="50px;"></br>
-                            电话：<input readonly="true" placeholder="登录后可见" width="50px" th:if="${session.username == null }">
-                            <input readonly="true" th:value="${ guide.phone}" width="50px" th:if="${session.username != null}"></br>
-                        </p>
-                        <span>英文名称</span>
-                        <p th:text="${spot.placeNameEn}"></p>
-                        <span>地点全称</span>
-                        <p th:text="${spot.alias}"></p>
-                        <span>地点范围</span>
-                        <p th:text="${spot.isSchool == 0} ? '校内地点' : '校外周边'"></p>
-                        <span>地点类型</span>
-                        <p th:if="${spot.type == 1}">学习</p>
-                        <p th:if="${spot.type == 2}">美食</p>
-                        <p th:if="${spot.type == 3}">生活</p>
-                        <p th:if="${spot.type == 4}">娱乐</p>
-                        <span>更新时间</span>
-                        <p th:text="${spot.updateTime}"></p>
-                    </div>
                 </div>
                 <div class="detailed">
-                    <div class="pstit">
-                        <span>详细信息</span>
-                    </div>
-                    <div class="detatxt">
-                        <p th:text="${spot.descr}"></p>
-                    </div>
                 </div>
-                <div class="prevnext clearfix">
-                    <div class="pnwrap pull-left">
+                <div class="inquiry clearfix">
+                    <div class="pstit">
+                        <span>导游申请</span>
                     </div>
-                    <a href="/spot/inSchool?type=1" class="return pull-right">
-                        返回列表
-                    </a>
+                    <div class="inquirycon pull-left">
+                        <div>
+                                <label><img id="headImg" th:src="${guide.imgUrl}" width="150" height="200"></label></br>
+                                <label class="la7"><input type="button" value="上传头像"></label>
+                                <label></label>
+                                <label></label>
+                                <label><span>姓名</span><input id="name" type="text" th:value="${guide.name}" /><em>*</em></label>
+                                <label><span>性别</span><input id="gender" type="text" th:value="${guide.gender}" /><em>*</em></label>
+                                <label><span>手机</span><input id="phone" type="text" th:value="${guide.phone}" /><em>*</em></label>
+                                <label><span>邮箱</span><input id="email" type="text" th:value="${guide.email}" /></label>
+                                <label class="la5"><span>备注</span><textarea id="remark" th:value="${guide.remark}"></textarea></label>
+                                <label class="la6"><span>学号</span><input id="studentID" type="text" th:value="${guide.studentID}" /></label>
+                                <label class="la7"><input type="button" value="提交" onclick="apply()"/></label>
+                        </div>
+                        <div class="inimg pull-right">
+                            <img th:src="@{/cns/images/inimg.jpg}" alt="" />
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -134,7 +118,7 @@
 <!--placeholder-->
 <script th:src="@{/cns/js/jquery.placeholder.min.js}" type="text/javascript" charset="utf-8"></script>
 <script th:src="@{/util/common.js}"></script>
-<script th:src="@{/cns/js/lightbox.js}" type="text/javascript"></script>
+<script th:src="@{/cns/js/apply.js}"></script>
 <script type="text/javascript">
     $(function () {
         $('input, textarea').placeholder();

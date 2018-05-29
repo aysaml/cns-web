@@ -49,49 +49,49 @@
                 username=#{username},
             </if>
             <if test="name!=null">
-                name=#{name}
+                name=#{name},
             </if>
             <if test="gender!=null">
-                gender=#{gender}
+                gender=#{gender},
             </if>
             <if test="birthday!=null">
-                birthday=#{birthday}
+                birthday=#{birthday},
             </if>
             <if test="imgUrl!=null">
-                imgUrl=#{imgUrl}
+                imgUrl=#{imgUrl},
             </if>
             <if test="idCard!=null">
-                idCard=#{idCard}
+                idCard=#{idCard},
             </if>
             <if test="nationId!=null">
-                nationId=#{nationId}
+                nationId=#{nationId},
             </if>
             <if test="nativePlace!=null">
-                nativePlace=#{nativePlace}
+                nativePlace=#{nativePlace},
             </if>
             <if test="politicId!=null">
-                politicId=#{politicId}
+                politicId=#{politicId},
             </if>
             <if test="email!=null">
-                email=#{email}
+                email=#{email},
             </if>
             <if test="phone!=null">
-                phone=#{phone}
+                phone=#{phone},
             </if>
             <if test="address!=null">
-                address=#{address}
+                address=#{address},
             </if>
             <if test="departmentId!=null">
-                departmentId=#{departmentId}
+                departmentId=#{departmentId},
             </if>
             <if test="major!=null">
-                major=#{major}
+                major=#{major},
             </if>
             <if test="beginDate!=null">
-                beginDate=#{beginDate}
+                beginDate=#{beginDate},
             </if>
             <if test="studentState!=null">
-                studentState=#{studentState}
+                studentState=#{studentState},
             </if>
             <if test="studentID!=null">
                 studentID=#{studentID}
@@ -109,4 +109,29 @@
         select <include refid="userInfo"/> from t_user
         where username = #{username}
     </select>
+
+    <update id="updateUserInfo" parameterType="cn.edu.lnpu.cnsweb.web.model.Guide">
+        update t_user
+        <set>
+            <if test="name!=null">
+                name=#{name},
+            </if>
+            <if test="gender!=null">
+                gender=#{gender},
+            </if>
+            <if test="imgUrl!=null">
+                imgUrl=#{imgUrl},
+            </if>
+            <if test="email!=null">
+                email=#{email},
+            </if>
+            <if test="phone!=null">
+                phone=#{phone},
+            </if>
+            <if test="studentID!=null">
+                studentID=#{studentID}
+            </if>
+        </set>
+        where id=#{userId}
+    </update>
 </mapper>

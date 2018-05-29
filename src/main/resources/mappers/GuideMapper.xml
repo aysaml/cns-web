@@ -10,6 +10,16 @@
         <result property="phone" column="phone" jdbcType="VARCHAR"/>
     </resultMap>
 
+    <resultMap id="guideMap" type="cn.edu.lnpu.cnsweb.web.model.Guide">
+        <result property="userId" column="id" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="gender" column="gender" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="studentID" column="studentID" jdbcType="VARCHAR"/>
+        <result property="imgUrl" column="imgUrl" jdbcType="VARCHAR"/>
+    </resultMap>
+    
     <select id="getGuideBaseDetailByPlaceId" parameterType="Long" resultMap="baseMap">
         select g.id,u.name,u.phone
         from guide g
@@ -17,4 +27,21 @@
         where g.placeId = #{spotId,jdbcType=BIGINT}
         and g.yn = 1
     </select>
+    
+    <select id="getGuideByUserName" parameterType="java.lang.String" resultMap="guideMap">
+        select u.id,u.name,u.gender,u.phone,u.email,u.studentID,u.imgUrl
+        from t_user u
+        where username = #{username,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getByUserIdAndPlaceId" parameterType="java.util.Map" resultType="Integer">
+        select count(id)
+        from guide
+        where userId = #{userId,jdbcType=BIGINT}
+        and placeId = #{placeId,jdbcType=BIGINT}
+    </select>
+
+    <insert id="insert" parameterType="cn.edu.lnpu.cnsweb.web.model.Guide" useGeneratedKeys="true">
+        insert into guide (placeId,userId,remark) values (#{placeId,jdbcType=BIGINT},#{userId,jdbcType=BIGINT},#{remark,jdbcType=BIGINT})
+    </insert>
 </mapper>

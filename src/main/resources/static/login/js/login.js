@@ -206,7 +206,7 @@ function doLogin() {
     var url = '/doLogin';
     callService('POST',url,{'username':username,'password':password},function (data){
         if(data.state == 0){
-            location.href = '/home';
+            self.location=document.referrer;
         }else{
             alert(data.data);
         }
