@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>地点接入</title>
+    <title>地点接入</title>
+    <meta name="keywords" content="地点接入">
+    <meta name="description" content="地点接入">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- include main css -->
+    <link rel="stylesheet" type="text/css" th:href="@{/cns/css/slick.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/cns/css/bootstrap.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/cns/css/jquery.mmenu.all.css}"/>
+    <link rel="stylesheet" th:href="@{/cns/css/animate.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/cns/css/style.css}"/>
+    <link rel="stylesheet" th:href="@{/cns/css/jquery.mCustomScrollbar.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/webuploader/webuploader.css}">
+
+    <!--[if lt IE 9]>
+    <script th:src="@{http://apps.bdimg.com/libs/html5shiv/r29/html5.min.js}"></script>
+    <script th:src="@{http://apps.bdimg.com/libs/respond.js/1.4.2/respond.min.js}"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div>
+    <!--header-->
+    <div th:include="/common/header :: nav"></div>
+
+    <!--banner-->
+    <section class="banner">
+        <img th:src="@{/cns/images/strbanner.jpg}" alt=""/>
+    </section>
+
+
+</div>
+
+<!--面包屑导航 start-->
+<div class="mbx">
+    <div class="container">
+        <div class="nytit pull-left">地点接入</div>
+        <menu class="menu pull-left" id="menu">
+        </menu>
+        <div class="mbxwrap pull-right">
+            <a href="/home">首页</a> <span>/</span>
+            <a href="/spot/inSchool?type=1">收录地点</a> <span>/</span>
+            <em>地点接入</em>
+        </div>
+    </div>
+</div>
+<!--面包屑导航 end-->
+
+
+<div class="nycon">
+
+    <div class="container">
+        <div class="pro proshow">
+            <div class="pshowcon">
+                <div class="pshowc clearfix">
+                </div>
+                <div class="detailed">
+                    温馨提示：请你务必完整填写以下信息，否则可能不能通过审核！
+                </div>
+                <div class="inquiry clearfix">
+                    <div class="pstit">
+                        <span>地点接入</span>
+                    </div>
+                    <div class="inquirycon pull-left">
+                        <fieldset>
+                            <div>
+                                <label><img id="headImg" src="" width="160%" height="90%"></label></br>
+                                <label class="la7"><a id="head-upload" uploadType="imageFile" type="button" >上传图片</a></label><br><br><br><br>
+                                <label><span>中文名称</span><input id="placeNameCh" type="text"  /><em>*</em></label>
+                                <label><span>英文名称</span><input id="placeNameEn" type="text"  /><em>*</em></label>
+                                <label><span>地点全名</span><input id="alias" type="text"  /><em>*</em></label>
+                                <label><span>地点类型</span><select name="type" id="type">
+                                    <option checked>请选择...</option>
+                                    <option value="1" >学习</option>
+                                    <option value="2">美食</option>
+                                    <option value="3" >娱乐</option>
+                                    <option value="4" >生活</option>
+                                </select></label>
+                                <label><span>地点分类</span></label><input type="radio" name="isSchool" value="0">校内地点
+                                <input type="radio" name="isSchool" value="1">校园周边
+                                <label class="la5"><span>地点描述</span><textarea id="descr"></textarea></label>
+                                <label class="la7" style="left: 80px;"><input type="button" value="提交" onclick="addPlace()"/></label>
+                            </div>
+                        </fieldset>
+                        <div class="inimg pull-right">
+                            <img th:src="@{/cns/images/inimg.jpg}" alt="" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="innews">
+</div>
+<!--footer start-->
+<div th:include="/common/footer :: foot"></div>
+
+<!--footer end-->
+
+
+<!--移动端  Mmenu-->
+<div th:include="/common/mnav :: mnav"></div>
+
+
+<!--Include Js-->
+<script th:src="@{http://apps.bdimg.com/libs/jquery/1.8.3/jquery.min.js}" type="text/javascript"
+        charset="utf-8"></script>
+
+<!--移动端导航-->
+<script th:src="@{/cns/js/jquery.mmenu.all.min.js}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" th:src="@{/cns/js/jquery.mCustomScrollbar.concat.min.js}"></script>
+<script th:src="@{/cns/js/public.js}" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" th:src="@{/cns/js/slick.min.js}"></script>
+<script type="text/javascript" th:src="@{/webuploader/webuploader.js}"></script>
+<!--placeholder-->
+<script th:src="@{/cns/js/jquery.placeholder.min.js}" type="text/javascript" charset="utf-8"></script>
+<script th:src="@{/util/common.js}"></script>
+<script th:src="@{/util/upload-head.js}"></script>
+<script th:src="@{/cns/js/addPlace.js}"></script>
+<script type="text/javascript">
+    $(function () {
+        $('input, textarea').placeholder();
+    });
+</script>
+<script>
+    jQuery(function () {
+        jQuery(window).load(function () {
+            $("#cont1").mCustomScrollbar();
+        })
+    })
+</script>
+</body>
+</html>

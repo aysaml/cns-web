@@ -161,7 +161,10 @@ public class AccessController {
             result.setData("地点参数错误！");
             return result;
         }
-
+        Date date = new Date();
+        place.setCreateTime(new SimpleDateFormat("yyyy-MM-dd").format(date));
+        String operator = (String)session.getAttribute("username");
+        place.setOperator(operator);
         try{
             placeService.addPlace(place);
             result.setState(ConstantState.SUCCESS.getCode());
