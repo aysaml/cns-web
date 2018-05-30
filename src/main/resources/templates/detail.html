@@ -42,11 +42,11 @@
     <div class="container">
         <div class="nytit pull-left">地点详情</div>
         <menu class="menu pull-left" id="menu">
-            <div><a onclick="showPictures();">精美照片展示</a></div>
-            <div><a onclick="SpotNavigation();">位置路线导航</a> </div>
-            <div><a onclick="applyGuide();">申请成为导游</a> </div>
-            <div><a onclick="uploadPic();">上传地点照片</a> </div>
-            <div><a id="qrbutton" rel="lightbox" class="cboxElement">生成导航二维码</a></div>
+            <div><a onclick="showPictures();">照片展示</a></div>
+            <div><a onclick="SpotNavigation();">路线导航</a> </div>
+            <div><a onclick="applyGuide();">导游申请</a> </div>
+            <div><a onclick="uploadPic();">上传照片</a> </div>
+            <div><a id="qrbutton" rel="lightbox" class="cboxElement">生成二维码</a></div>
         </menu>
         <div class="mbxwrap pull-right">
             <a href="/home">首页</a> <span>/</span>
@@ -64,6 +64,7 @@
         <input id="spotId" type="hidden" th:value="${spot.id}">
         <input id="coordinate" type="hidden" th:value="${spot.coordinate}"/>
         <input id="spotName" type="hidden" th:value="${spot.alias}">
+        <input id="placeName" type="hidden" th:value="${spot.placeNameCh}">
         <div class="pro proshow">
             <div class="pshowcon">
                 <div class="pshowc clearfix">
@@ -179,7 +180,7 @@
     function applyGuide() {
         var placeId = $('#spotId').val();
 
-        var placeName = $('#spotName').val();
+        var placeName = $('#placeName').val();
 
         location.href = "/access/guide?placeId=" + placeId + "&placeName=" + placeName;
     }
@@ -187,7 +188,7 @@
     function uploadPic() {
         var placeId = $('#spotId').val();
 
-        var placeName = $('#spotName').val();
+        var placeName = $('#placeName').val();
 
         location.href = "/access/picture?placeId=" + placeId + "&placeName=" + placeName;
     }

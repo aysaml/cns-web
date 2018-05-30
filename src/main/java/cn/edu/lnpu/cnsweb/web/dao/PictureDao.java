@@ -18,4 +18,11 @@ public interface PictureDao {
      * @return
      */
     List<Picture> getPicturesByPlaceId(Long spotId);
+
+    /**
+     * 插入一条记录
+     * @param picture
+     * @return
+     */
+    int insert(Picture picture);
 }

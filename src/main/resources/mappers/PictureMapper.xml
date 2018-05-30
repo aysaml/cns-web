@@ -26,4 +26,8 @@
         where placeId = #{spotId,jdbcType=BIGINT}
         and yn = 1
     </select>
+
+    <insert id="insert" parameterType="cn.edu.lnpu.cnsweb.web.model.Picture" useGeneratedKeys="true">
+        insert into picture(placeId,url,picName,placeName,remark,createTime,operator) values(#{placeId},#{url},#{picName},#{placeName},#{remark},#{createTime},#{operator})
+    </insert>
 </mapper>

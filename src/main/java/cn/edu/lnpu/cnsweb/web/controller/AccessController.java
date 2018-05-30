@@ -3,7 +3,9 @@ package cn.edu.lnpu.cnsweb.web.controller;
 import cn.edu.lnpu.cnsweb.common.ConstantState;
 import cn.edu.lnpu.cnsweb.common.JsonResult;
 import cn.edu.lnpu.cnsweb.web.model.Guide;
+import cn.edu.lnpu.cnsweb.web.model.Picture;
 import cn.edu.lnpu.cnsweb.web.service.GuideService;
+import cn.edu.lnpu.cnsweb.web.service.PictureService;
 import cn.edu.lnpu.cnsweb.web.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 导游controller
@@ -35,6 +39,9 @@ public class AccessController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PictureService pictureService;
 
     @RequestMapping("/guide")
     public String applyGuidePage(@RequestParam("placeId") String id, @RequestParam("placeName") String name,HttpServletRequest request, Model model){
@@ -90,4 +97,38 @@ public class AccessController {
         return result;
     }
 
+
+    @RequestMapping("/picture")
+    public String uploadPicturePage(@RequestParam("placeId") String id, @RequestParam("placeName") String name,HttpSession session, Model model){
+        model.addAttribute("placeId",Long.parseLong(id));
+        model.addAttribute("placeName",name);
+        return "uploadPic";
+    }
+
+
+    public JsonResult addPicture(@RequestBody Picture picture,HttpSession session){
+        JsonResult result = new JsonResult();
+        if(picture != null){
+            result.setState(ConstantState.INVALID_DATA.getCode());
+            result.setMessage(ConstantState.INVALID_DATA.getMessage());
+            result.setData("参数错误！");
+            return result;
+        }
+
+        try{
+            String operator = (String)session.getAttribute("username");
+            picture.setOperator(operator);
+            Date date = new Date();
+            picture.setCreateTime(new SimpleDateFormat("yyyy-MM-dd").format(date));
+            pictureService.addPicture(picture);
+            return result;
+        }catch (Exception e){
+            logger.error("插入图片数据异常：",e.getMessage());
+            e.printStackTrace();
+            result.setState(ConstantState.RUNTIME_ERROR.getCode());
+            result.setMessage(ConstantState.RUNTIME_ERROR.getMessage());
+            result.setData("系统繁忙，稍后再试！");
+        }
+        return result;
+    }
 }

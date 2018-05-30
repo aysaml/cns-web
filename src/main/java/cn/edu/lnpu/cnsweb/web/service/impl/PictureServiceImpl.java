@@ -31,4 +31,15 @@ public class PictureServiceImpl implements PictureService {
     public List<Picture> getPicturesByPlaceId(Long spotId) {
         return pictureDao.getPicturesByPlaceId(spotId);
     }
+
+    /**
+     * 增加一条图片记录
+     *
+     * @param picture
+     * @return
+     */
+    @Override
+    public int addPicture(Picture picture) {
+        return pictureDao.insert(picture);
+    }
 }

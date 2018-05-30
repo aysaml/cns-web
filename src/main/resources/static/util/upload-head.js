@@ -47,7 +47,7 @@
         if (type == "Q_TYPE_DENIED") {
             alert("请上传JPG、PNG、GIF、BMP格式文件");
         } else if (type == "Q_EXCEED_SIZE_LIMIT") {
-            alert("头像大小不能超过10M哦！");
+            alert("图片大小不能超过10M哦！");
         }else {
             alert("上传出错！请检查后重新上传!");
         }
@@ -62,8 +62,6 @@
 
     });
 
-    /*var $divFirst=$('#resume-upload div:first');
-    $divFirst.addClass('head-upload');*/
 
 })(jQuery);
 

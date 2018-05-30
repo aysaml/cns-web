@@ -17,4 +17,11 @@ public interface PictureService {
      * @return
      */
     List<Picture> getPicturesByPlaceId(Long spotId);
+
+    /**
+     * 增加一条图片记录
+     * @param picture
+     * @return
+     */
+    int addPicture(Picture picture);
 }
