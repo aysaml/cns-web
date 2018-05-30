@@ -105,10 +105,11 @@ public class AccessController {
         return "uploadPic";
     }
 
-
+    @RequestMapping("/addPic")
+    @ResponseBody
     public JsonResult addPicture(@RequestBody Picture picture,HttpSession session){
         JsonResult result = new JsonResult();
-        if(picture != null){
+        if(picture == null){
             result.setState(ConstantState.INVALID_DATA.getCode());
             result.setMessage(ConstantState.INVALID_DATA.getMessage());
             result.setData("参数错误！");

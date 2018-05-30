@@ -12,9 +12,10 @@ function uploadPic() {
             remark : $('#remark').val()
         }
         
-        callServiceJson("POST",url,param,function (res) {
+        callServiceJson("POST",url,JSON.stringify(param),function (res) {
             if(res.state == 0000){
                 alert("提交成功，请您耐心等待审核！");
+                location.href = "/spot/inSchool?type=1";
             }else{
                 alert(res.data);
             }
@@ -27,7 +28,7 @@ function check() {
 
     var remark = $('#remark').val();
 
-    var imgurl = $('#head-upload').attr("src");
+    var imgurl = $('#headImg').attr("src");
 
     if(picName == "" || picName == null){
         alert("图片名称不能为空！");
@@ -43,4 +44,5 @@ function check() {
         alert("请您上传图片！");
         return false;
     }
+    return true;
 }
