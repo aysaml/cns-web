@@ -69,4 +69,11 @@ public interface PlaceService {
      * @return
      */
     NavigationPlaceVo getNavigationVoByPlaceId(Long spotId);
+
+    /**
+     * 增加地点
+     * @param place
+     * @return
+     */
+    int addPlace(Place place);
 }

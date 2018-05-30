@@ -4,8 +4,10 @@ import cn.edu.lnpu.cnsweb.common.ConstantState;
 import cn.edu.lnpu.cnsweb.common.JsonResult;
 import cn.edu.lnpu.cnsweb.web.model.Guide;
 import cn.edu.lnpu.cnsweb.web.model.Picture;
+import cn.edu.lnpu.cnsweb.web.model.Place;
 import cn.edu.lnpu.cnsweb.web.service.GuideService;
 import cn.edu.lnpu.cnsweb.web.service.PictureService;
+import cn.edu.lnpu.cnsweb.web.service.PlaceService;
 import cn.edu.lnpu.cnsweb.web.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +44,9 @@ public class AccessController {
 
     @Autowired
     private PictureService pictureService;
+
+    @Autowired
+    private PlaceService placeService;
 
     @RequestMapping("/guide")
     public String applyGuidePage(@RequestParam("placeId") String id, @RequestParam("placeName") String name,HttpServletRequest request, Model model){
@@ -122,9 +127,49 @@ public class AccessController {
             Date date = new Date();
             picture.setCreateTime(new SimpleDateFormat("yyyy-MM-dd").format(date));
             pictureService.addPicture(picture);
+            result.setState(ConstantState.SUCCESS.getCode());
+            result.setMessage(ConstantState.SUCCESS.getMessage());
+            result.setData("提交成功，请耐心等待审核！");
             return result;
         }catch (Exception e){
             logger.error("插入图片数据异常：",e.getMessage());
+            e.printStackTrace();
+            result.setState(ConstantState.RUNTIME_ERROR.getCode());
+            result.setMessage(ConstantState.RUNTIME_ERROR.getMessage());
+            result.setData("系统繁忙，稍后再试！");
+        }
+        return result;
+    }
+
+    /**
+     * 地点接入页面
+     * @return
+     */
+    @RequestMapping("/addPage")
+    public String addPlacePage(){
+        return "addPlace";
+    }
+
+
+    @RequestMapping("/addPlace")
+    @ResponseBody
+    public JsonResult addPlace(@RequestBody Place place,HttpSession session){
+        JsonResult result = new JsonResult();
+        if(place == null){
+            result.setState(ConstantState.INVALID_DATA.getCode());
+            result.setMessage(ConstantState.INVALID_DATA.getMessage());
+            result.setData("地点参数错误！");
+            return result;
+        }
+
+        try{
+            placeService.addPlace(place);
+            result.setState(ConstantState.SUCCESS.getCode());
+            result.setMessage(ConstantState.SUCCESS.getMessage());
+            result.setData("提交成功，请耐心等待审核！");
+            return result;
+        }catch (Exception e){
+            logger.error("插入地点数据异常：：",e.getMessage());
             e.printStackTrace();
             result.setState(ConstantState.RUNTIME_ERROR.getCode());
             result.setMessage(ConstantState.RUNTIME_ERROR.getMessage());

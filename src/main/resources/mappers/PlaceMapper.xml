@@ -105,4 +105,9 @@
         where id = #{spotId,jdbcType=BIGINT}
         and yn = 1
     </select>
+
+    <insert id="insert" parameterType="cn.edu.lnpu.cnsweb.web.model.Place" useGeneratedKeys="true">
+        insert into place (placeNameCh,placeNameEn,alias,isSchool,isHot,type,descr,createTime,operator,img)
+        values (#{placeNameCh},#{placeNameEn},#{alias},#{isSchool},#{type},#{descr},#{createTime},#{updateTime},#{operator},#{img})
+    </insert>
 </mapper>

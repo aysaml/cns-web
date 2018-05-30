@@ -72,7 +72,7 @@
                         <div>
                             <fieldset>
                                 <label><img id="headImg" th:src="${guide.imgUrl == null} ? '/cns/images/head.jpg' : ${guide.imgUrl}" width="150" height="200"></label></br>
-                                <label class="la7"><a id="head-upload" uploadType="imageFile" type="button" >上传头像</a></label>
+                                <label class="la7"><a id="head-upload" uploadType="imageFile" type="button" >上传头像</a></label><br><br><br><br>
                                 <label><span>姓名</span><input id="name" type="text" th:value="${guide.name}" /><em>*</em></label>
                                 <label><span>性别</span><input id="gender" type="text" th:value="${guide.gender}" /><em>*</em></label>
                                 <label><span>手机</span><input id="phone" type="text" th:value="${guide.phone}" /><em>*</em></label>

@@ -129,4 +129,15 @@ public class PlaceServiceImpl implements PlaceService {
     public NavigationPlaceVo getNavigationVoByPlaceId(Long spotId) {
         return placeDao.getNavigationVoByPlaceId(spotId);
     }
+
+    /**
+     * 增加地点
+     *
+     * @param place
+     * @return
+     */
+    @Override
+    public int addPlace(Place place) {
+        return placeDao.insert(place);
+    }
 }

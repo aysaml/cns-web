@@ -61,4 +61,11 @@ public interface PlaceDao {
      * @return
      */
     NavigationPlaceVo getNavigationVoByPlaceId(Long spotId);
+
+    /**
+     * 插入一条记录
+     * @param place
+     * @return
+     */
+    int insert(Place place);
 }
