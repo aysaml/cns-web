@@ -21,6 +21,8 @@ public class Guide {
 
     private String gender;
 
+    private String qq;
+
     private String phone;
 
     private String email;
@@ -83,6 +85,14 @@ public class Guide {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
     }
 
     public String getPhone() {

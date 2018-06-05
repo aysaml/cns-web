@@ -8,12 +8,14 @@
         <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="qq" column="qq" jdbcType="VARCHAR"/>
     </resultMap>
 
     <resultMap id="guideMap" type="cn.edu.lnpu.cnsweb.web.model.Guide">
         <result property="userId" column="id" jdbcType="BIGINT"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="gender" column="gender" jdbcType="VARCHAR"/>
+        <result property="qq" column="qq" jdbcType="VARCHAR"/>
         <result property="phone" column="phone" jdbcType="VARCHAR"/>
         <result property="email" column="email" jdbcType="VARCHAR"/>
         <result property="studentID" column="studentID" jdbcType="VARCHAR"/>
@@ -21,7 +23,7 @@
     </resultMap>
     
     <select id="getGuideBaseDetailByPlaceId" parameterType="Long" resultMap="baseMap">
-        select g.id,u.name,u.phone
+        select g.id,u.name,u.phone,u.qq
         from guide g
         inner join t_user u on g.userId = u.id
         where g.placeId = #{spotId,jdbcType=BIGINT}
@@ -29,7 +31,7 @@
     </select>
     
     <select id="getGuideByUserName" parameterType="java.lang.String" resultMap="guideMap">
-        select u.id,u.name,u.gender,u.phone,u.email,u.studentID,u.imgUrl
+        select u.id,u.name,u.gender,u.phone,u.email,u.studentID,u.imgUrl,u.qq
         from t_user u
         where username = #{username,jdbcType=VARCHAR}
     </select>

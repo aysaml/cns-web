@@ -3,23 +3,25 @@ package cn.edu.lnpu.cnsweb.web.controller;
 import cn.edu.lnpu.cnsweb.common.ConstantState;
 import cn.edu.lnpu.cnsweb.common.JsonResult;
 import cn.edu.lnpu.cnsweb.common.StringUtils;
-import cn.edu.lnpu.cnsweb.web.model.GuideVo;
-import cn.edu.lnpu.cnsweb.web.model.Place;
-import cn.edu.lnpu.cnsweb.web.model.PlaceVo;
-import cn.edu.lnpu.cnsweb.web.model.SpotType;
+import cn.edu.lnpu.cnsweb.web.model.*;
 import cn.edu.lnpu.cnsweb.web.service.GuideService;
 import cn.edu.lnpu.cnsweb.web.service.PlaceService;
 import cn.edu.lnpu.cnsweb.web.service.SpotTypeService;
+import cn.edu.lnpu.cnsweb.web.service.UserRecordService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
+import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,6 +44,9 @@ public class SpotController {
 
     @Autowired
     private GuideService guideService;
+
+    @Autowired
+    private UserRecordService userRecordService;
 
     @RequestMapping("/inSchool")
     public String inSchoolSpotPage(@RequestParam("type") String type,Model model){
@@ -180,5 +185,24 @@ public class SpotController {
     @RequestMapping("/test")
     public String testUpload(){
         return "fileUploadTest";
+    }
+
+
+    @RequestMapping(value = "/log",method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResult userLog(HttpSession session){
+        JsonResult result = new JsonResult();
+        UserRecord record = new UserRecord();
+        try{
+            record.setBehavior("联系导游");
+            record.setOperator((String)session.getAttribute("username"));
+            Date date = new Date();
+            record.setCreateTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date));
+            userRecordService.logRecord(record);
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("记录用户操作日志异常：",e.getMessage());
+        }
+        return result;
     }
 }

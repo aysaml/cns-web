@@ -13,6 +13,8 @@ public class GuideVo {
 
     private String phone;
 
+    private String qq;
+
     public Long getId() {
         return id;
     }
@@ -35,5 +37,13 @@ public class GuideVo {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
     }
 }

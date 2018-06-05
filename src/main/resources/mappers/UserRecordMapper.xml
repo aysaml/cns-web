@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.lnpu.cnsweb.web.dao.UserRecordDao">
+
+    <insert id="insert" parameterType="cn.edu.lnpu.cnsweb.web.model.UserRecord" useGeneratedKeys="true">
+        insert into cns_user_record (behavior,operator,createTime)
+        values(#{behavior,jdbcType=VARCHAR},#{operator,jdbcType=VARCHAR},#{createTime,jdbcType=VARCHAR})
+    </insert>
+</mapper>

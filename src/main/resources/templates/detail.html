@@ -75,9 +75,9 @@
                         <h3 th:text="${spot.placeNameCh}"></h3>
                         <span>导游</span>
                         <p th:each="guide,iterStat:${spot.guides}">
-                            姓名：<input readonly="true" th:value="${ guide.name}" width="50px;"></br>
-                            电话：<input readonly="true" placeholder="登录后可见" width="50px" th:if="${session.username == null }">
-                            <input readonly="true" th:value="${ guide.phone}" width="50px" th:if="${session.username != null}"></br>
+                            姓名：<input readonly="true" th:value="${guide.name}" width="50px;"></br>
+                            Q  Q：<input readonly="true" placeholder="登录后可见" width="50px" th:if="${session.username == null }">
+                            <a type="button" th:if="${session.username != null}" onclick="contact(this);" th:id="${guide.qq}">联系导游</a></br>
                         </p>
                         <span>英文名称</span>
                         <p th:text="${spot.placeNameEn}"></p>
@@ -191,6 +191,22 @@
         var placeName = $('#placeName').val();
 
         location.href = "/access/picture?placeId=" + placeId + "&placeName=" + placeName;
+    }
+
+    function contact(obj) {
+        var qq = $(obj).attr('id');
+
+        var url = "http://wpa.qq.com/msgrd?v=3&uin="+ qq +"&site=qq&menu=yes ";
+
+        window.open(url);
+
+        log();
+    }
+
+    function log() {
+        var url = "/spot/log";
+
+        callService("POST",url);
     }
 </script>
 </body>
